@@ -1,0 +1,87 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\**" />
+    <Compile Remove="Models\Transports\BusModels\Enums\**" />
+    <Compile Remove="Models\Transports\CarModels\Enums\**" />
+    <Compile Remove="Models\Transports\Enums\**" />
+    <Content Remove="Areas\Identity\**" />
+    <Content Remove="Models\Transports\BusModels\Enums\**" />
+    <Content Remove="Models\Transports\CarModels\Enums\**" />
+    <Content Remove="Models\Transports\Enums\**" />
+    <EmbeddedResource Remove="Areas\Identity\**" />
+    <EmbeddedResource Remove="Models\Transports\BusModels\Enums\**" />
+    <EmbeddedResource Remove="Models\Transports\CarModels\Enums\**" />
+    <EmbeddedResource Remove="Models\Transports\Enums\**" />
+    <None Remove="Areas\Identity\**" />
+    <None Remove="Models\Transports\BusModels\Enums\**" />
+    <None Remove="Models\Transports\CarModels\Enums\**" />
+    <None Remove="Models\Transports\Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="new-announce.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="new-announce.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\Jobs\" />
+    <Folder Include="Areas\Admin\Controllers\RealEstates\" />
+    <Folder Include="Areas\Admin\Controllers\Transports\" />
+    <Folder Include="Areas\Admin\Models\CRUD\Delete\" />
+    <Folder Include="Areas\Admin\Models\CRUD\Details\" />
+    <Folder Include="Models\Jobs\Commons\" />
+    <Folder Include="Models\PagesModels\ViewModel\Common\Jobs\" />
+    <Folder Include="Models\PagesModels\ViewModel\Common\RealEstate\" />
+    <Folder Include="Models\PagesModels\ViewModel\Jobs\Businesses\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\Jobs\Foods\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\Jobs\Job\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\RealEstate\Apartments\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\RealEstate\Garages\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\RealEstate\Houses\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\RealEstate\Lands\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\RealEstate\Offices\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\Transport\Accessories\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\Transport\Buses\Items\" />
+    <Folder Include="Models\PagesModels\ViewModel\Transport\Motocycles\Items\" />
+    <Folder Include="Models\Real-Estates\Common\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\images\Other\" />
+    <Folder Include="wwwroot\Upload\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\lib\images\Transport\Car\vip2.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

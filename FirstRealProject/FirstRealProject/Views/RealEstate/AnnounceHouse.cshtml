@@ -1,0 +1,122 @@
+﻿@model HouseView
+@{
+    ViewData["Title"] = "AnnounceCar";
+}
+
+<section class="autoItemContent">
+    <div class="productImages">
+        <div class="image">
+            <div class="column">
+                <img src="@Model.Photos.ToList()[0].Path" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+            </div>
+        </div>
+        <div class="images">
+            @{int k = 1; }
+            @foreach (var photo in Model.Photos)
+            {
+                <div class="column">
+                    <img src="@photo.Path" style="width:100%" onclick="openModal();currentSlide(@k)" class="hover-shadow cursor">
+                </div>
+                k++;
+            }
+        </div>
+
+        <div id="myModal" class="modal">
+            <span class="close cursor" id="transportClose" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                @{int h = 1; }
+                @foreach (var photo in Model.Photos)
+                {
+                    <div class="mySlides">
+                        <div class="numbertext">@h / @Model.Photos.Count</div>
+                        <img src="@photo.Path" style="width:100%">
+                    </div>
+                    h++;
+                }
+                <a class="prev" id="transportPrev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" id="transportNext" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+    <div class="productDetails">
+        <div class="detailsTopBar">
+            <div class="productPrice">
+                <strong>@Model.Price</strong>
+                <span>AZN</span>
+            </div>
+            <div class="productInfo">
+                <div class="productTitle">
+                    <h2>@Model.AnounceName</h2>
+                </div>
+                <div class="ownServices">
+                    <ul class="services">
+                        <li class="servicesVip">
+                            <a href="#" data-toggle="modal" data-target="#modalVip" data-val="@Model.Id" data-findTable="@Model.FindTable">Elani VIP et</a>
+                        </li>
+                        <li class="servicesPremium">
+                            <a href="" data-toggle="modal" data-target="#modalPremium" data-val="@Model.Id" data-findTable="@Model.FindTable">Premium et</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="detailsContent">
+            <div class="contentContact">
+                <div class="author">
+                    <a href="">@Model.PhoneNumber</a>
+                    <span>Qurban</span>
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="lot-info">
+                    <p>Elanın nömrəsi:@Model.AnnounceUniqueCode</p>
+                    <p>Baxışların sayı: @Model.AnnounceViewCount</p>
+                    <p>Yeniləndi: @Model.AnnouncePublishDate.Value.ToString("d MMMM yyyy hh:mm")</p>
+                </div>
+                <div class="lot-actions">
+                    <ul>
+                        <li><a href="#" data-toggle="modal" data-target="#modalEdit" data-val="@Model.Id" data-findTable="@Model.FindTable"><i class="fas fa-pen"></i>Düzəliş et</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#modalDelete" data-val="@Model.Id" data-findTable="@Model.FindTable"><i class="far fa-trash-alt"></i>Elanı sil</a></li>
+                    </ul>
+                </div>
+                <div class="addmark">
+                    <a href=""><i class="far fa-star"></i>Seçilmişlərə əlavə et</a>
+                </div>
+            </div>
+            <div class="contentDetails">
+                <div class="leftDetails">
+                    <ul class="lot-properties">
+                        <li class="property">
+                            <label class="propertyName">Şəhər</label>
+                            <span class="propertyValue">@Model.City.Name</span>
+                        </li>
+                        <li class="property">
+                            <label class="propertyName">Qiymət</label>
+                            <span class="propertyValue">@Model.Price Azn</span>
+                        </li>
+                        <li class="property">
+                            <label class="propertyName">Sahə</label>
+                            <span class="propertyValue">@Model.Area m2</span>
+                        </li>
+                        <li class="property">
+                            <label class="propertyName">Yerləsşdirmə yeri</label>
+                            <span class="propertyValue">@Model.Location</span>
+                        </li>
+                        <li class="property">
+                            <label class="propertyName">Elanın tipi</label>
+                            <span class="propertyValue">@Model.RSAnnounceType.Name</span>
+                        </li>
+                        <li class="property">
+                            <label class="propertyName">Əmlakın növü</label>
+                            <span class="propertyValue">@Model.HouseType.Name</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footerDetails">
+                    <span>
+                        @Model.Description
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,604 @@
+﻿@model SettingModel
+@{
+    Layout = "/Views/Shared/_NewAnnounceLayout.cshtml";
+    ViewData["Title"] = "new-announce";
+}
+<section class="anounce-content">
+    <div class="header">
+        <h1>Yeni elan</h1>
+    </div>
+    <div class="lot-form">
+        <form class="announce-form" id="form" name="form" action="house" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="category">
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CategoryId">Kateqoriya</label>
+                    <select class="form-control col-7" id="category-select" asp-for="CategoryId">
+                        <option value="0">Siyahidan seçin</option>
+                        <optgroup label="Nəqliyyat">
+                            <option value="1/car">Avtomobillər</option>
+                            <option value="2/bus">Avtobus və xüsusi texnika</option>
+                            <option value="3/motocycle">Motosikletlər və mopedlər</option>
+                            <option value="4/accessory">Ehtiyyat hisseləri və aksesuarlar</option>
+                        </optgroup>
+                        <optgroup label="Daşınmaz əmlak">
+                            <option value="5/apartment">Mənzil</option>
+                            <option selected="selected" value="6/house">Villalar, Bağ evləri</option>
+                            <option value="7/office">Obyektlər və ofislər</option>
+                            <option value="8/land">Torpaq</option>
+                            <option value="9/qarage">Qarajlar</option>
+                        </optgroup>
+                        <optgroup label="İş Elanları">
+                            <option value="10/business">Biznes üçün avadanliq</option>
+                            <option value="11/job">İş</option>
+                            <option value="12/food">Ərzaq</option>
+                        </optgroup>
+                    </select>
+                    <span asp-validation-for="CategoryId"></span>
+                </div>
+            </div>
+            <div class="change-category change-category-1" style="display: none;">
+                <!-- avtomobil start -->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarMakeId">Marka</label>
+                    <select class="form-control col-7" id="car-make" asp-for="CarMakeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var make in Model.CarMakes)
+                        {
+                            <option value="@make.Id">@make.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CarMakeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarModelId">Model</label>
+                    <select class="form-control col-7" id="car-model" asp-for="CarModelId">
+                        <option value="0" en>Siyahidan seçin</option>
+                        @foreach (var make in Model.CarModels)
+                        {
+                            <option value="@make.Id">@make.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CarModelId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarMotor">Mühərrik, sm3</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" asp-for="CarMotor" id="inputAddress">
+                    <span asp-validation-for="CarMotor"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarMotorStrength">Mühərrikin gücü</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="CarMotorStrength">
+                    <span asp-validation-for="CarMotorStrength"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="@Model.SpeedBoxId">Sürətlər qutusu</label>
+                    <select class="form-control col-7" asp-for="SpeedBoxId" id="category-select">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var speed in Model.SpeedBoxes)
+                        {
+                            <option value="@speed.Id">@speed.Name</option>
+                        }
+
+                    </select>
+                    <span asp-validation-for="@Model.SpeedBoxId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="TransmissionId">Ötürücü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="TransmissionId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var tranmission in Model.Transmissions)
+                        {
+
+                            <option value="@tranmission.Id">@tranmission.Name</option>
+
+                        }
+                    </select>
+                    <span asp-validation-for="TransmissionId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="FuelTypeId">Yanacağın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="FuelTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var fuel in Model.FuelTypes)
+                        {
+                            <option value="@fuel.Id">@fuel.Name</option>
+
+                        }
+                    </select>
+                    <span asp-validation-for="FuelTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarBodyTypeId">Kuzov növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="CarBodyTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var bodyType in Model.CarBodyTypes)
+                        {
+                            <option value="@bodyType.Id">@bodyType.Name</option>
+
+                        }
+                    </select>
+                    <span asp-validation-for="CarBodyTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="Color">Rəngi</label>
+                    <input type="text" class="form-control col-4" id="inputAddress" asp-for="Color">
+                    <span asp-validation-for="Color"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarYear">Buraxılış ili</label>
+                    <input type="number" min="0" step="1" class="form-control col-4" id="inputAddress" asp-for="CarYear">
+                    <span asp-validation-for="CarYear"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CarKilometer">Yürüş, km</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="CarKilometer">
+                    <span asp-validation-for="CarKilometer"></span>
+                </div>
+
+                <div class="form-group row container-new">
+                    <p class="col-5"></p>
+                    <div class="col-7">
+                        <input asp-for="CarCondition" />
+                        <label>Yeni?</label>
+                    </div>
+                </div>
+                <p>Elanın adı avtomatik olaraq tərtib olunacaq</p>
+                <div class="transport-supply">
+                    <p>Avtomobilin təchizatı</p>
+                    <div class="form-group row">
+
+                        @foreach (var autoEquipment in Model.AutoEquipments)
+                        {
+                            <div>
+                                <input type="checkbox" id="@autoEquipment.Id" value="@autoEquipment.Id" name="autoEquipmentId">
+                                <label>@autoEquipment.Name</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- avtomobil end -->
+            </div>
+            <div class="change-category change-category-4" style="display: none;">
+                <!-- ehtiyat hisseleri ve aksesuarlar start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="AccessoryTypeId">Elanın növü</label>
+                    <select class="form-control col-7" asp-for="AccessoryTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var accessoryType in Model.AccessoryTypes)
+                        {
+                            <option value="@accessoryType.Id">@accessoryType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="AccessoryTypeId"></span>
+                </div>
+                <div class="form-group row container-new">
+                    <p class="col-5"></p>
+                    <div class="col-7">
+                        <input asp-for="AccessoryCondition">
+                        <label>Yeni?</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="AccessoryName">Elanın adı</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="AccessoryName">
+                    <span asp-validation-for="AccessoryName"></span>
+                </div>
+                <!-- ehtiyat hisseleri ve aksesuarlar end-->
+
+            </div>
+            <div class="change-category change-category-3" style="display: none;">
+
+                <!-- motosikletler ve mopedler start -->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleBodyTypeId">Malın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="MotocycleBodyTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var bodyType in Model.MotocycleBodyTypes)
+                        {
+                            <option value="@bodyType.Id">@bodyType.Name</option>
+                        }
+
+                    </select>
+                    <span asp-validation-for="MotocycleBodyTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleMakeId">Marka</label>
+                    <select class="form-control col-7" id="category-select" asp-for="MotocycleMakeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var bodyMake in Model.BusMakes)
+                        {
+                            <option value="@bodyMake.Id">@bodyMake.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="MotocycleMakeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleModel">Model</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="MotocycleModel">
+                    <span asp-validation-for="MotocycleModel"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleMotor">Mühərrikin həcmi, sm3</label>
+                    <input type="number" step="1" class="form-control col-4" id="inputAddress" asp-for="MotocycleMotor">
+                    <span asp-validation-for="MotocycleMotor"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleYear">Buraxılış ili</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="MotocycleYear">
+                    <span asp-validation-for="MotocycleYear"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="MotocycleKilometer">Yürüşü, km</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="MotocycleKilometer">
+                    <span asp-validation-for="MotocycleKilometer"></span>
+                </div>
+                <div class="form-group row container-new">
+                    <p class="col-5"></p>
+                    <div class="col-7">
+                        <input asp-for="MotocycleCondition">
+                        <label>Yeni?</label>
+                    </div>
+                </div>
+                <!-- motosikletler ve mopedler end -->
+            </div>
+            <div class="change-category change-category-2" style="display: none;">
+
+                <!-- avtobuslar ve xususi texnikalar start -->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusBodyTypeId">Malın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="BusBodyTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var busBodyType in Model.BusBodyTypes)
+                        {
+                            <option value="@busBodyType.Id">@busBodyType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="BusBodyTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusMakeId">Marka</label>
+                    <select class="form-control col-7" id="category-select" asp-for="BusMakeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var bodyMake in Model.BusMakes)
+                        {
+                            <option value="@bodyMake.Id">@bodyMake.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="BusMakeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusYear">Buraxılış ili</label>
+                    <input type="number" step="1" class="form-control col-4" id="inputAddress" asp-for="BusYear">
+                    <span asp-validation-for="BusYear"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusKilometer">Yürüşü, km</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="BusKilometer">
+                    <span asp-validation-for="BusKilometer"></span>
+                </div>
+                <div class="form-group row container-new">
+                    <p class="col-5"></p>
+                    <div class="col-7">
+                        <input asp-for="BusCondition">
+                        <label>Yeni?</label>
+                    </div>
+                </div>
+                <!-- avtobuslar ve xususi texnikalar end -->
+            </div>
+            <div class="change-category change-category-5" style="display: none;">
+
+                <!-- menziller start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="RSAnnounceTypeId">Elanın tipi</label>
+                    <select class="form-control col-7" id="category-select" asp-for="RSAnnounceTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var apartmentType in Model.RSAnnounceTypes)
+                        {
+                            <option value="@apartmentType.Id">@apartmentType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="RSAnnounceTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="ApartmentTypeId">Binanın tipi</label>
+                    <select class="form-control col-7" id="category-select" asp-for="ApartmentTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var apartmentType in Model.ApartmentTypes)
+                        {
+                            <option value="@apartmentType.Id">@apartmentType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="ApartmentTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="ApartmentArea">Sahə, m2</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="ApartmentArea">
+                    <span asp-validation-for="ApartmentArea"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="ApartmentRoomCount">Otaq sayı</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="ApartmentRoomCount">
+                    <span asp-validation-for="ApartmentRoomCount"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="ApartamentLocation"></label>
+                    <input type="text" class="form-control col-7" asp-for="ApartamentLocation">
+                    <span asp-validation-for="ApartamentLocation"></span>
+                </div>
+                <p>Elanın adı avtomatik olaraq tərtib olunacaq</p>
+                <!-- Menziller end-->
+
+            </div>
+            <div class="change-category change-category-6" style="display: block;">
+
+                <!-- Villalar, bag evleri start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="HouseTypeId">Əmlakın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="HouseTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var houseType in Model.HouseTypes)
+                        {
+                            <option value="@houseType.Id">@houseType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="HouseTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="HouseRSAnnounceTypeId">Elanın tipi</label>
+                    <select class="form-control col-7" id="category-select" asp-for="HouseRSAnnounceTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var houseType in Model.RSAnnounceTypes)
+                        {
+                            <option value="@houseType.Id">@houseType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="RSAnnounceTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="HouseArea">Sahə, m2</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="HouseArea">
+                    <span asp-validation-for="HouseArea"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="HouseLocation">Yerləşmə yeri</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="HouseLocation">
+                    <span asp-validation-for="HouseLocation"></span>
+                </div>
+                <p>Elanın adı avtomatik olaraq tərtib olunacaq</p>
+                <!-- Villalar, bag evleri end-->
+
+            </div>
+            <div class="change-category change-category-7" style="display: none;">
+
+                <!-- Obyektler ve ofisler start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="OfficeTypeId">Əmlakın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="OfficeTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var officeType in Model.OfficeTypes)
+                        {
+                            <option value="@officeType.Id">@officeType.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="OfficeTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="OfficeRSAnnounceTypeId">Elanın tipi</label>
+                    <select class="form-control col-7" id="category-select" asp-for="OfficeRSAnnounceTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var rsAnnounce in Model.RSAnnounceTypes)
+                        {
+                            <option value="@rsAnnounce.Id">@rsAnnounce.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="RSAnnounceTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="OfficeArea">Sahə, m2</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="OfficeArea">
+                    <span asp-validation-for="OfficeArea"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="OfficeLocation">Yerləşmə yeri</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="OfficeLocation">
+                    <span asp-validation-for="OfficeLocation"></span>
+                </div>
+                <p>Elanın adı avtomatik olaraq tərtib olunacaq</p>
+                <!-- Obyektler ve ofisler end-->
+
+            </div>
+            <div class="change-category change-category-8" style="display: none;">
+
+                <!-- Torpaq start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="LandArea">Sahə, m2</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="LandArea">
+                    <span asp-validation-for="LandArea"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="LandLocation">Yerləşmə yeri</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="LandLocation">
+                    <span asp-validation-for="LandLocation"></span>
+                </div>
+                <p>Elanın adı avtomatik olaraq tərtib olunacaq</p>
+                <!-- Torpaq end-->
+
+            </div>
+            <div class="change-category change-category-9" style="display: none;">
+
+                <!-- Qaraj start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="GarageName">Elanın adı</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="GarageName">
+                    <span asp-validation-for="GarageName"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="GarageArea">Sahə, m2</label>
+                    <input type="number" step="1" min="0" class="form-control col-4" id="inputAddress" asp-for="GarageArea">
+                    <span asp-validation-for="GarageArea"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="GarageLocation">Yerləşmə yeri</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="GarageLocation">
+                    <span asp-validation-for="GarageLocation"></span>
+                </div>
+                <!-- Qaraj end-->
+
+            </div>
+            <div class="change-category change-category-11" style="display: none;">
+
+                <!-- İş start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label">Fəaliyyət sahəsi</label>
+                    <select class="form-control col-7" id="category-select" name="jobActivityAreaId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var activityArea in Model.ActivityAreas)
+                        {
+                            <option value="@activityArea.Id">@activityArea.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="JobTypeId">Elanın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="JobTypeId">
+                        <option value="0">Siyahidan seçin</option>
+                        @foreach (var jobType in Model.JobTypes)
+                        {
+                            <option value="@jobType.Id">@jobType.Name</option>
+
+                        }
+                    </select>
+                    <span asp-validation-for="JobTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="JobName">Elanın adı</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="JobName">
+                    <span asp-validation-for="JobName"></span>
+                </div>
+                <!-- İş end-->
+
+            </div>
+            <div class="change-category change-category-10" style="display: none;">
+
+                <!-- Biznes ucun avadanliq start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusinessTypeId">Malın növü</label>
+                    <select class="form-control col-7" id="category-select" asp-for="BusinessTypeId">
+                        <option value="1">Siyahidan seçin</option>
+                        @foreach (var businessType in Model.BusinessTypes)
+                        {
+                            <option value="@businessType.Id">@businessType.Name</option>
+
+                        }
+                    </select>
+                    <span asp-validation-for="BusinessTypeId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="BusinessName">Elanın adı</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="BusinessName">
+                    <span asp-validation-for="BusinessName"></span>
+                </div>
+                <!-- Biznes ucun avadanliq end-->
+
+            </div>
+            <div class="change-category change-category-12" style="display: none;">
+
+                <!-- ərzaq start-->
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="FoodName">Elanın adı</label>
+                    <input type="text" class="form-control col-7" id="inputAddress" asp-for="FoodName">
+                    <span asp-validation-for="FoodName"></span>
+                </div>
+                <!-- Ərzaq end-->
+
+            </div>
+            <div class="lot-post">
+                <div id="property-set">
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="CityId">Şəhər</label>
+                    <select class="form-control col-7" id="number" asp-for="CityId">
+                        <option value="1">Bakı</option>
+                        <option value="2">Şəmkir</option>
+                    </select>
+                    <span asp-validation-for="CityId"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="Price">Qiymət</label>
+                    <input type="number" min="0" step="1" class="form-control col-4" id="inputAddress" asp-for="Price">
+                    <label class="col-1 col-form-label" for="inputAddress">Azn</label>
+                    <span asp-validation-for="Price"></span>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5 col-form-label" asp-for="Description">Məzmun</label>
+                    <textarea class="col-7" name="description" id="" cols="30" rows="10" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <div class="add-images row">
+                    <label class="col-5 col-form-label">Şəkillər</label>
+                    <div class="images col-7">
+                        <input id="files" type="file" name="files" value="" multiple />
+                        <input type="hidden" asp-for="PhotoLength" value="0" />
+                        <span asp-validation-for="PhotoLength" style="font-size: 13px;color: #c33;"></span>
+                        <div id="show-images"></div>
+                    </div>
+
+                </div>
+                <fieldset class="contact">
+                    <div class="form-group row">
+                        <p class="col-5"></p>
+                        @foreach (var personType in Model.PersonTypes)
+                        {
+                            <div class="col-2">
+                                <input type="radio" id="lot-person-type" value="@personType.Id" checked name="personTypeId">
+                                <label>@personType.Name</label>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-5 col-form-label" asp-for="PersonName">Adınız</label>
+                        <input type="text" class="form-control col-7" id="inputAddress" asp-for="PersonName">
+                        <span asp-validation-for="PersonName"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-5 col-form-label" asp-for="Email"></label>
+                        <input type="text" class="form-control col-7" asp-for="Email" id="inputAddress">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-5 col-form-label" asp-for="PhoneNumber"></label>
+                        <input type="text" class="form-control col-7" asp-for="PhoneNumber" id="inputAddress">
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+
+                    @foreach (var item in Model.AnnounceTypes)
+                    {
+                        <div class="form-group row service">
+                            <p class="col-5"></p>
+                            <div class="col-7">
+                                <input type="radio" id="lot-announce-type" value="@item.Id" checked name="AnnounceTypeId">
+                                <label>@item.Name @item.Price Azn</label>
+                                @if (item.Description != null)
+                                {
+                                    <p class="vip-info" style="display: none;">@item.Description</p>
+                                }
+                            </div>
+                        </div>
+                    }
+                </fieldset>
+
+                @await Component.InvokeAsync("UserAgreement")
+
+                <div class="lot-save">
+                    <button type="submit" id="btnUpload">Elanı əlavə et</button>
+                </div>
+            </div>
+        </form>
+        @await Component.InvokeAsync("Role")
+
+    </div>
+</section>
+
+

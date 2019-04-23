@@ -1,0 +1,248 @@
+﻿@model ViewPageA
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Common">Əsas səhifə</a>
+        </li>
+        @switch (Model.Pagination.FindTable)
+        {
+
+            case FindTableA.Car:
+                <li class="breadcrumb-item active">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Car">Avtomobillər</a>
+                </li>
+                break;
+            case FindTableA.Bus:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Bus">Avtobuslar</a>
+                </li>
+                break;
+            case FindTableA.Accessory:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Accessory">Ehtiyat hissələri və aksesuarlar</a>
+                </li>
+                break;
+            case FindTableA.Motocycle:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Motocycle">Motosikletlər və mopedlər</a>
+                </li>
+                break;
+            case FindTableA.Apartment:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Apartment">Mənzillər</a>
+                </li>
+                break;
+            case FindTableA.House:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.House">Villalar, bağ evləri</a>
+                </li>
+                break;
+            case FindTableA.Office:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Office">Obyektlər və ofislər</a>
+                </li>
+                break;
+            case FindTableA.Garage:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Garage">Qarajlar</a>
+                </li>
+                break;
+            case FindTableA.Land:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Land">Torpaq</a>
+                </li>
+                break;
+            case FindTableA.Job:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Job">İş</a>
+                </li>
+                break;
+            case FindTableA.Business:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Business">Biznes üçün avadanlıq</a>
+                </li>
+                break;
+            case FindTableA.Food:
+                <li class="breadcrumb-item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Food">Ərzaq</a>
+                </li>
+                break;
+            default:
+                break;
+        }
+        <li class="breadcrumb-item active">Dərc olunmuş elanlar</li>
+    </ol>
+
+    <!-- Icon Cards index.html-->
+    @*<div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-fw fa-comments"></i>
+                    </div>
+                    <div class="mr-5">Ümumi elanlar</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" asp-area="Admin" asp-controller="home" asp-action="index">
+                    <span class="float-left">Ətraflı</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-fw fa-list"></i>
+                    </div>
+                    <div class="mr-5">Yoxlanılmamış elanlar</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" asp-area="Admin" asp-controller="home" asp-action="noncheckin">
+                    <span class="float-left">Ətraflı</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-fw fa-shopping-cart"></i>
+                    </div>
+                    <div class="mr-5">Dərc olunmuş elanlar</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" asp-area="Admin" asp-controller="home" asp-action="published">
+                    <span class="float-left">Ətraflı</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-fw fa-life-ring"></i>
+                    </div>
+                    <div class="mr-5">Rədd olunmuş elanlar</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" asp-area="Admin" asp-controller="home" asp-action="nonpublished">
+                    <span class="float-left">Ətraflı</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>*@
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Elanlar
+        </div>
+        @if (Model.ViewAnnounceAs.Count() != 0)
+        {
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Pin kod</th>
+                                <th>Kateqoriya</th>
+                                <th>Alt kateqoriya</th>
+                                <th>Elanın adı</th>
+                                <th>Elanın tipi</th>
+                                <th>Status</th>
+                                <th>Əməliyyat</th>
+                            </tr>
+                        </thead>
+                        @if (Model.ViewAnnounceAs.Count() > 10)
+                        {
+                            <tfoot>
+                                <tr>
+                                    <th>Pin kod</th>
+                                    <th>Kateqoriya</th>
+                                    <th>Alt kateqoriya</th>
+                                    <th>Elanın adı</th>
+                                    <th>Elanın tipi</th>
+                                    <th>Status</th>
+                                    <th>Əməliyyat</th>
+                                </tr>
+                            </tfoot>
+                        }
+                        <tbody>
+                            @foreach (var item in Model.ViewAnnounceAs)
+                            {
+                                <tr>
+                                    <td>@item.AnnouncePinCode</td>
+                                    <td>@item.Category</td>
+                                    <td>@item.SubCategory</td>
+                                    <td>@item.Name</td>
+                                    @switch (item.AnnounceTypeFind)
+                                    {
+                                        case AnnounceTypeFind.Sade:
+                                            <td>
+                                                <h5><span class="badge badge-primary">@item.AnnounceType.Name</span></h5>
+                                            </td>
+                                            break;
+                                        case AnnounceTypeFind.Vip:
+                                            <td>
+                                                <h5><span class="badge badge-warning">@item.AnnounceType.Name</span></h5>
+                                            </td>
+                                            break;
+                                        case AnnounceTypeFind.Premium:
+                                            <td>
+                                                <h5><span class="badge badge-secondary">@item.AnnounceType.Name</span></h5>
+                                            </td>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    @switch (item.FindStatus)
+                                    {
+                                        case FindStatus.Derc:
+                                            <td>
+                                                <h5><span class="badge badge-success">@item.Status</span></h5>
+                                            </td>
+                                            break;
+                                        case FindStatus.Redd:
+                                            <td>
+                                                <h5><span class="badge badge-danger">@item.Status</span></h5>
+                                            </td>
+                                            break;
+                                        case FindStatus.Yoxlama:
+                                            <td>
+                                                <h5><span class="badge badge-warning">@item.Status</span></h5>
+                                            </td>
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                            <td style="width: 165px;display: block;">
+                                                <a class="btn btn-success" title="Edit" asp-area="Admin" asp-controller="@item.Controller.ToLower()" asp-action="@item.EditAction.ToLower()" asp-route-id="@item.Id" asp-route-findTable="@item.FindTable"><i class="far fa-edit"></i></a>
+                                                <a class="btn btn-danger" title="Delete" asp-area="Admin" asp-controller="home" asp-action="deleteannounce" asp-route-id="@item.Id" asp-route-findTable="@item.FindTable"><i class="fas fa-trash-alt"></i></a>
+                                                <a class="btn btn-primary" title="Details" asp-area="Admin" asp-controller="@item.Controller.ToLower()" asp-action="@item.ReadAction.ToLower()" asp-route-id="@item.Id" asp-route-findTable="@item.FindTable"><i class="fab fa-readme"></i></a>
+                                            </td>
+                                </tr>
+                            }
+                            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/Partial/_PaginationAPartial.cshtml", Model.Pagination)
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>

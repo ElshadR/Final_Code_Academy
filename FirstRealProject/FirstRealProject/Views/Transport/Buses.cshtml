@@ -1,0 +1,340 @@
+﻿@model ViewPage
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<!-- Content start -->
+<div class="content">
+    <!-- Bus Search bar start -->
+    <section class="QuickSearch">
+        <form asp-area="" asp-action="buses" asp-controller="transport" method="get">
+            <input type="hidden" name="test" id="condition-credit" value="@Model.ConditionCredit.ToString()" />
+            <input type="hidden" name="test" id="condition-barter" value="@Model.ConditionBarter.ToString()" />
+            <fieldset class="searchItemsRow">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <div class="searchCategory">
+                            <div class="select-dropdown">
+                                <button role="button" data-value="" class="select-dropdown__button searchCategoryBtn Categoryoverlapp">
+                                    <span class="Categoryoverlapp">
+                                        Avtobus və
+                                        xüsusi
+                                        texnika
+                                    </span><i class="fas fa-angle-down Categoryoverlapp"></i>
+                                </button>
+                                <ul class="select-dropdown__list searchCategoryList">
+                                    <text>Nəqliyyat</text>
+                                    <li data-value="1" data-selector="select" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="cars" asp-controller="transport">
+                                            Avtomobillər
+                                        </a>
+                                    </li>
+                                    <li data-value="1" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="buses" asp-controller="transport">
+                                            Avtobus və
+                                            xüsusi
+                                            texnika
+                                        </a>
+                                    </li>
+                                    <li data-value="2" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="motocycles" asp-controller="transport">
+                                            Motosikletlər
+                                            və
+                                            mopedlər
+                                        </a>
+                                    </li>
+                                    <li data-value="3" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="accessories" asp-controller="transport">
+                                            Ehtiyat
+                                            hissələri və
+                                            aksesuarlar
+                                        </a>
+                                    </li>
+                                    <text>Daşınmaz əmlak</text>
+                                    <li data-value="1" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="apartments" asp-controller="real-estate">
+                                            Mənziller
+                                        </a>
+                                    </li>
+                                    <li data-value="1" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="houses-villas" asp-controller="real-estate">
+                                            Villalar, bağ evləri
+                                        </a>
+                                    </li>
+                                    <li data-value="2" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="commercials" asp-controller="real-estate">
+                                            Obyektlər və ofislər
+                                        </a>
+                                    </li>
+                                    <li data-value="2" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="garages" asp-controller="real-estate">
+                                            Qarajlar
+                                        </a>
+                                    </li>
+                                    <li data-value="3" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="lands" asp-controller="real-estate">
+                                            Torpaq
+                                        </a>
+                                    </li>
+                                    <text>İş və biznes</text>
+                                    <li data-value="1" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="jobs" asp-controller="jobs">
+                                            İş
+                                        </a>
+                                    </li>
+                                    <li data-value="1" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="business" asp-controller="jobs">
+                                            Biznes üçün avadanlıq
+                                        </a>
+                                    </li>
+                                    <li data-value="2" class="select-dropdown__list-item">
+                                        <a asp-area="" asp-action="foods" asp-controller="jobs">
+                                            Ərzaq
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="searchName">
+                            <input type="text" asp-for="Name" placeholder="Məsələn, iPhone 7">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="labelCheck">
+                            <select asp-for="CityId">
+                                <option value="0" selected>Butun Azerbaycan</option>
+                                @if (Model.Cities != null)
+                                {
+                                    foreach (var city in Model.Cities)
+                                    {
+                                        <option value="@city.Id">@city.Name</option>
+                                    }
+                                }
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="searchPrice">
+                            <span>
+                                Qiymət, AZN
+                            </span>
+                            <div class="minMax">
+                                <input type="text" asp-for="SPrice" placeholder="min.">
+                                <span>-</span>
+                                <input type="text" asp-for="BPrice" placeholder="max.">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="searchArea">
+                            <span>
+                                Buraxılış ili
+                            </span>
+                            <div class="minMax">
+                                <input type="text" asp-for="SYear" placeholder="min.">
+                                <span>-</span>
+                                <input type="text" asp-for="BYear" placeholder="max.">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="searchLenghtRoom">
+                            <span>
+                                Yürüş, km
+                            </span>
+                            <div class="minMax">
+                                <input type="text" asp-for="SKilometer" placeholder="min.">
+                                <span>-</span>
+                                <input type="text" asp-for="BKilometer" placeholder="max.">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label class="labelCheck">
+                            <select asp-for="BusBodyTypeId">
+                                <option disabled selected hidden>Malın növü</option>
+                                @if (Model.BusBodyTypes != null && Model.BusMakes.Count() != 0)
+                                {
+                                    @foreach (var bodyType in Model.BusBodyTypes)
+                                    {
+                                        <option value="@bodyType.Id">@bodyType.Name</option>
+                                    }
+                                }
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="labelCheck">
+                            <select  asp-for="MakeId">
+                                <option disabled selected hidden>Marka</option>
+                                @if (Model.BusMakes != null && Model.BusMakes.Count()!=0)
+                                {
+                                    @foreach (var make in Model.BusMakes)
+                                    {
+                                        <option value="@make.Id">@make.Name</option>
+                                    }
+                                }
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="labelCheck">
+                            <select asp-for="Condition">
+                                <option value="0" disabled selected hidden>Yeni?</option>
+                                <option value="1">Beli</option>
+                                <option value="2">Xeyir</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <div class="checkboxArea">
+                            <div class="minMax">
+                                <label class="check" for="">
+                                    <span>Kredit</span>
+                                    <input asp-for="ConditionCredit" />
+                                </label>
+                                <label class="check" for="">
+                                    <span>Barter</span>
+                                    <input asp-for="ConditionBarter" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <div class="searchBtn">
+                            <button type="submit">Tap<i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <!-- Bus Search bar end -->
+    @if (Model.ViewAnnouncesVip.Count() != 0)
+    {
+        <section class="allAnnounce">
+
+            <div class="pageSubHeader">
+                <h2><span>Vip</span> Elanlar</h2>
+                @if (Model.ViewAnnouncesVip.Count() > 2)
+                {
+                    <a class="float-right mr-5 my-4" asp-area="" asp-controller="transport" asp-action="type-bus" asp-all-route-data='new Dictionary<string, string>() { {"page","0" },{"count","16" },{"typeAnnounce","vip" } }'>Bütün Vip elanlar</a>
+                }
+            </div>
+            <div class="announceProduct ">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesVip)
+
+            </div>
+        </section>
+
+    }
+
+    @if (Model.LastAnnounces.Count() != 0)
+    {
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Son</span> Elanlar</h2>
+            </div>
+            <div class="announceProduct simple-announces">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.LastAnnounces)
+            </div>
+        </section>
+    }
+</div>
+<!-- Content end -->
+
+@section Scripts{
+
+
+    <script>
+        var hasMoreRecords = true;
+        var page = 1;
+        var count = 8; // return new 8 records
+
+        if (hasMoreRecords) {
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > ($(document).height() - $(window).height()) - 370) {
+                        FetchDataFromServer();
+                        page++;
+                    }
+                });
+            });
+        }
+        var name;
+        var cityId;
+        var sPrice;
+        var bPrice;
+        var sYear;
+        var bYear;
+        var sKilometer;
+        var bKilometer;
+        var makeId;
+        var bodyTypeId;
+        var Condition;
+        var ConditionCredit;
+        var ConditionBarter;
+        function dataAdd() {
+            name = $("#Name").val();
+            cityId = $("#CityId").val();
+            sPrice = $("#SPrice").val();
+            bPrice = $("#BPrice").val();
+            sYear = $("#SYear").val();
+            bYear = $("#BYear").val();
+            sKilometer = $("#SKilometer").val();
+            bKilometer = $("#BKilometer").val();
+            makeId = $("#MakeId").val();
+            bodyTypeId = $("#BusBodyTypeId").val();
+            Condition = $("#Condition").val();
+            ConditionCredit = $("#condition-credit").val();
+            ConditionBarter = $("#condition-barter").val();
+        }
+        dataAdd();
+        function FetchDataFromServer() {
+            if (!hasMoreRecords) {
+                return;
+            }
+            debugger
+            $.ajax({
+                url: "/all/transportajax/simple-bus",
+                data: {
+                    page: page, count: count,
+                    cityId: cityId,
+                    name: name,
+                    cityId: cityId,
+                    sPrice: sPrice, bPrice: bPrice,
+                    sYear: sYear, bYear: bYear,
+                    sKilometer: sKilometer,
+                    bKilometer: bKilometer,
+                    BusBodyTypeId: bodyTypeId,
+                    MakeId: makeId,
+                    Condition: Condition,
+                    ConditionBarter: ConditionBarter,
+                    ConditionCredit: ConditionCredit,
+                },
+                datatype: 'json',
+                success: function (data) {
+                    if (data === "stop" || data.count < 8) {
+                        hasMoreRecords = false; // signal no more records to display
+                    }
+                    else {
+                        console.log(page);
+                        $(".simple-announces").append(data);
+                        // update for next iteration
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+    </script>
+}

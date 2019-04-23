@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<section class="middleHead">
+	<div class="middleLeft">
+		<a asp-area="" asp-action="Index" asp-controller="Home">
+			<h1>Turbo.az</h1>
+		</a>
+	</div>
+	<div class="middleRight">
+		<div class="middleNav">
+			@if (SignInManager.IsSignedIn(User))
+            {
+				<form asp-area="User" asp-action="Logout" asp-controller="Account" method="get" id="logoutForm" class="navbar-right">
+					<ul>
+						<li><a href="#">Saytda reklam</a></li>
+						<li><a asp-area="" asp-action="selectedannounces" asp-controller="home"><i class="fas fa-star"></i>Seçilmişlər</a></li>
+						<li><a asp-area="user" asp-action="index" asp-controller="home"><i class="far fa-heart"></i>Mənim elanlarım</a></li>
+						<li>@*<a asp-area="User" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>*@</li>
+						<li><button type="submit" class="btn btn-link navbar-btn navbar-link">Çıxış</button></li>
+						<li><a asp-area="" asp-action="index" asp-controller="new-announce" class="announceButton"><i class="fas fa-plus"></i>Elan yerləşdir</a></li>
+					</ul>
+				</form>
+			}
+			else
+			{
+				<ul>
+					<li><a href="#">Saytda reklam</a></li>
+                    <li><a asp-area="" asp-action="selectedannounces" asp-controller="home"><i class="fas fa-star"></i>Seçilmişlər</a></li>
+					<li><a asp-area="User" asp-controller="Home" asp-action="Index"><i class="far fa-user"></i>Giriş</a></li>
+					<li><a asp-area="" asp-action="index" asp-controller="new-announce" class="announceButton"><i class="fas fa-plus"></i>Elan yerləşdir</a></li>
+				</ul>
+			}
+
+		</div>
+	</div>
+</section>

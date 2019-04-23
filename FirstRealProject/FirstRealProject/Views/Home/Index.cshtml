@@ -1,0 +1,50 @@
+﻿@model ViewPage
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Content start -->
+<div class="content">
+    @if (Model.ViewAnnouncesVip.Count() != 0)
+    {
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Vip</span> Elanlar</h2>
+                <a class="float-right mr-5 my-4" asp-area="" asp-controller="home" asp-action="type-home" asp-all-route-data='new Dictionary<string, string>() { {"page","0" },{"count","16" },{"typeAnnounce","vip" } }'>Bütün Vip elanlar</a>
+            </div>
+            <div class="announceProduct">
+                    @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesVip)
+
+            </div>
+        </section>
+    }
+    @if (Model.ViewAnnouncesSimple.Count() != 0)
+    {
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Son</span> Elanlar</h2>
+                <a class="float-right mr-5 my-4" asp-area="" asp-controller="home" asp-action="type-home" asp-all-route-data='new Dictionary<string, string>() { {"page","0" },{"count","16" },{"typeAnnounce","sade" } }'>Hamısı</a>
+
+            </div>
+            <div class="announceProduct">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesSimple)
+
+            </div>
+        </section>
+    }
+
+    @if (Model.ViewAnnouncesPremium.Count()!=0)
+    {
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Premium</span> Elanlar</h2>
+                <a class="float-right mr-5 my-4" asp-area="" asp-controller="home" asp-action="type-home" asp-all-route-data='new Dictionary<string, string>() { {"page","0" },{"count","16" },{"typeAnnounce","premium" } }'>Hamısı</a>
+            </div>
+            <div class="announceProduct">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesPremium)
+            </div>
+        </section>
+    }
+
+    
+</div>
+

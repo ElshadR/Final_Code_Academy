@@ -1,0 +1,6 @@
+﻿@model IEnumerable<CarModel>
+
+@foreach (var mod in Model)
+{
+    <option value="@mod.Id">@mod.Name</option>
+}

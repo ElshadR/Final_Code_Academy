@@ -1,0 +1,153 @@
+﻿@model FirstRealProject.Models.Real_Estates.ApartmentModels.Apartment
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Apartment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RSAnnounceTypeId" class="control-label"></label>
+                <select asp-for="RSAnnounceTypeId" class ="form-control" asp-items="ViewBag.RSAnnounceTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentTypeId" class="control-label"></label>
+                <select asp-for="ApartmentTypeId" class ="form-control" asp-items="ViewBag.ApartmentTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomCount" class="control-label"></label>
+                <input asp-for="RoomCount" class="form-control" />
+                <span asp-validation-for="RoomCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartamentLocation" class="control-label"></label>
+                <input asp-for="ApartamentLocation" class="form-control" />
+                <span asp-validation-for="ApartamentLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceName" class="control-label"></label>
+                <input asp-for="AnnounceName" class="form-control" />
+                <span asp-validation-for="AnnounceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonTypeId" class="control-label"></label>
+                <select asp-for="PersonTypeId" class ="form-control" asp-items="ViewBag.PersonTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceAddedDate" class="control-label"></label>
+                <input asp-for="AnnounceAddedDate" class="form-control" />
+                <span asp-validation-for="AnnounceAddedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceEndedDate" class="control-label"></label>
+                <input asp-for="AnnounceEndedDate" class="form-control" />
+                <span asp-validation-for="AnnounceEndedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnouncePublishDate" class="control-label"></label>
+                <input asp-for="AnnouncePublishDate" class="form-control" />
+                <span asp-validation-for="AnnouncePublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceViewCount" class="control-label"></label>
+                <input asp-for="AnnounceViewCount" class="form-control" />
+                <span asp-validation-for="AnnounceViewCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnouncePinCode" class="control-label"></label>
+                <input asp-for="AnnouncePinCode" class="form-control" />
+                <span asp-validation-for="AnnouncePinCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceUniqueCode" class="control-label"></label>
+                <input asp-for="AnnounceUniqueCode" class="form-control" />
+                <span asp-validation-for="AnnounceUniqueCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceTypeId" class="control-label"></label>
+                <select asp-for="AnnounceTypeId" class ="form-control" asp-items="ViewBag.AnnounceTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentTypeId" class="control-label"></label>
+                <select asp-for="PaymentTypeId" class ="form-control" asp-items="ViewBag.PaymentTypeId"></select>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="AnnouncePublished" /> @Html.DisplayNameFor(model => model.AnnouncePublished)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="AnnounceCheckIn" /> @Html.DisplayNameFor(model => model.AnnounceCheckIn)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="AnnounceEnded" /> @Html.DisplayNameFor(model => model.AnnounceEnded)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppUserId" class="control-label"></label>
+                <select asp-for="AppUserId" class ="form-control" asp-items="ViewBag.AppUserId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

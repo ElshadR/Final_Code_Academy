@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ViewMenu>
+@{
+    Layout = null;
+}
+<section class="bottomHead">
+    <div class="headerNav">
+        <ul>
+            <li class="headerNavItem"><a asp-area="" asp-action="Index" asp-controller="Home" class="Home">Ana səhİfə</a></li>
+            @foreach (var itemMenu in Model)
+            {
+                <li class="headerNavItem">
+                    <div class="select-dropdown">
+                        <button role="button" data-value="" class="select-dropdown__button searchCatBtnTransport Transportoverlapp">
+                            <span class="Transportoverlapp">@itemMenu.Name</span><i class="fas fa-angle-down Transportoverlapp"></i>
+                        </button>
+                        <ul class="select-dropdown__list searchCatBtnTransportList">
+                            <li data-value="1" class="select-dropdown__list-item"><a asp-area="" asp-action="index" asp-controller="@itemMenu.Controller">Bütün Elanlar</a></li>
+                            @foreach (var itemCategory in itemMenu.ViewCategories)
+                            {
+                                <li data-value="@itemCategory.Id" class="select-dropdown__list-item"><a asp-area="" asp-action="@itemCategory.Action" asp-controller="@itemCategory.Controller">@itemCategory.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>

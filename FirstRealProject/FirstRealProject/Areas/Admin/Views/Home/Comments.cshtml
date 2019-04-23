@@ -1,0 +1,65 @@
+﻿@model CommentModel
+
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Elanlar
+        </div>
+        @if (Model.Comments.Count() != 0)
+        {
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Mətn</th>
+                                <th>Gondərilmə vaxtı</th>
+                                <th>Yoxlanılma vaxtı</th>
+                                <th>Yaxlanildı</th>
+                            </tr>
+                        </thead>
+                        @if (Model.Comments.Count() > 10)
+                        {
+                            <tfoot>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Mətn</th>
+                                    <th>Gondərilmə vaxtı</th>
+                                    <th>Yoxlanılma vaxtı</th>
+                                    <th>Yaxlanildı</th>
+                                </tr>
+                            </tfoot>
+                        }
+                        <tbody>
+                            @foreach (var item in Model.Comments)
+                            {
+                                <tr>
+                                    <td>@item.Email</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.SendDate.ToString("MM-dd-yyyy hh:mm")</td>
+                                    <td>@(item.CheckInDate==null? "---" :item.CheckInDate.Value.ToString("MM-dd-yyyy hh:mm"))</td>
+                                    <td><input style="width:20px;height:20px;" type="checkbox" id="checkIn" name="userroles" value="@(item.CheckIn ? "Yoxlanilib" : "Yoxlanilmaib")" @(item.CheckIn ? "checked=\"checked\"" : "") /></td>
+
+                                    <td style="width: 165px;display: block;">
+                                        <a class="btn btn-success" title="Edit" id="commentCheckIn" data-id="@item.Id" data-check="false"><i class="far fa-edit"></i></a>
+                                        <a class="btn btn-danger" title="Delete" asp-area="Admin" asp-controller="home" asp-action="commentdelete" asp-route-id="@item.Id" asp-route-checkin="@(item.CheckIn ? true :false)"><i class="fas fa-trash-alt"></i></a>
+                                        <a class="btn btn-primary" title="Details" asp-area="Admin" asp-controller="home" asp-action="commentdetail" asp-route-id="@item.Id" asp-route-checkin="true"><i class="fab fa-readme"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/Partial/_PaginationAPartial.cshtml", Model.Pagination)
+                </div>
+            </div>
+        }
+    </div>
+</div>

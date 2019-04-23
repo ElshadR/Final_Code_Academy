@@ -1,0 +1,51 @@
+﻿@model ViewPage
+@if (AnnounceTypeFind.Sade.ToString().ToLower() == Model.AnnounceTypeName.ToLower())
+{
+    <div class="content">
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Sadə</span> Elanlar</h2>
+            </div>
+            <div class="announceProduct">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesSimple)
+
+            </div>
+        </section>
+        @await Html.PartialAsync("~/Views/Shared/Partial/_PaginationPartial.cshtml", Model.Pagination)
+    </div>
+}
+else if (AnnounceTypeFind.Vip.ToString().ToLower() == Model.AnnounceTypeName.ToLower())
+{
+    <div class="content">
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Vip</span> Elanlar</h2>
+            </div>
+            <div class="announceProduct">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesVip)
+
+            </div>
+        </section>
+        @await Html.PartialAsync("~/Views/Shared/Partial/_PaginationPartial.cshtml", Model.Pagination)
+    </div>
+}
+else if (AnnounceTypeFind.Premium.ToString().ToLower() == Model.AnnounceTypeName.ToLower())
+{
+    <div class="content">
+        <section class="allAnnounce">
+            <div class="pageSubHeader">
+                <h2><span>Premium</span> Elanlar</h2>
+            </div>
+            <div class="announceProduct">
+                @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.ViewAnnouncesPremium)
+
+            </div>
+        </section>
+        @await Html.PartialAsync("~/Views/Shared/Partial/_PaginationPartial.cshtml", Model.Pagination)
+    </div>
+}
+else
+{
+
+}
+

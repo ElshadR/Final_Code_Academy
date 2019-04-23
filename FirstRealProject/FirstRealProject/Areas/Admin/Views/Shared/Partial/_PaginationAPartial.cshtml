@@ -1,0 +1,59 @@
+﻿@model PaginationA
+
+@if (Model.View)
+{
+    <nav style="display:grid;justify-content:center">
+        <ul class="pagination justify-content-center">
+            @if (Model.PrevClick)
+            {
+                var page = (Model.ActivePage - 1).ToString();
+                <li class="page-item">
+                    <a class="page-link" aria-label="Previous" asp-area="@Model.AreaName" asp-controller="@Model.ControllerName" asp-action="@Model.ActionName" asp-all-route-data='new Dictionary<string, string>() { {"page",page},{"count",Model.ViewItemCount.ToString() },{"typeAnnounce",Model.AnnounceType },{"findTable",Model.FindTable.ToString() }  }'>
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            }
+            @if (Model.ViewLeftDels)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">...</span>
+                    </a>
+                </li>
+            }
+            @for (int i = Model.StartCountPage; i < Model.EndCountPage; i++)
+            {
+                var page = i.ToString();
+                var PaginationCount = i + 1;
+                if (i == Model.ActivePage)
+                {
+                    <li class="page-item active"><a class="page-link" asp-area="@Model.AreaName" asp-controller="@Model.ControllerName" asp-action="@Model.ActionName" asp-all-route-data='new Dictionary<string, string>() { {"page",page },{"count",Model.ViewItemCount.ToString() },{"typeAnnounce",Model.AnnounceType },{"findTable",Model.FindTable.ToString() }  }'>@PaginationCount</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-area="@Model.AreaName" asp-controller="@Model.ControllerName" asp-action="@Model.ActionName" asp-all-route-data='new Dictionary<string, string>() { {"page",page },{"count",Model.ViewItemCount.ToString() },{"typeAnnounce",Model.AnnounceType },{"findTable",Model.FindTable.ToString() }  }'>@PaginationCount</a></li>
+                }
+
+            }
+            @if (Model.ViewRightDels)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">...</span>
+                    </a>
+                </li>
+            }
+            @if (Model.NextClick)
+            {
+                var page = (Model.ActivePage + 1).ToString();
+                <li class="page-item">
+                    <a class="page-link" aria-label="Next" asp-area="@Model.AreaName" asp-controller="@Model.ControllerName" asp-action="@Model.ActionName" asp-all-route-data='new Dictionary<string, string>() { {"page",page },{"count",Model.ViewItemCount.ToString()},{"typeAnnounce",Model.AnnounceType },{"findTable",Model.FindTable.ToString() }  }'>
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

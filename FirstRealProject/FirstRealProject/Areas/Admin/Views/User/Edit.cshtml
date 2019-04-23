@@ -1,0 +1,36 @@
+﻿@model UserChangeModelA
+
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-area="Admin" asp-action="Edit" asp-controller="User">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="HeaderName" />
+        <input type="hidden" asp-for="RoleName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Email</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Phone</label>
+        <input type="text" asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        @foreach (IdentityRole role in Model.AllRoles)
+        {
+            <input type="checkbox" name="userroles" value="@role.Name"
+                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+            }
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-default" />
+    </div>
+</form>

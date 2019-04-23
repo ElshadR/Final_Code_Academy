@@ -1,0 +1,41 @@
+﻿@model UserRegisterModel
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Create";
+}
+<body>
+	<div class="container">
+		<div id="login-row" class="row justify-content-center">
+			<div id="login-column" class="col-md-4">
+				<div class="login-box col-md-12">
+					<h1>Qeydiyyat</h1>
+					<div asp-validation-summary=" All" class="text-danger"></div>
+					<form asp-action="register" method="post">
+						<div class="form-group">
+							<label asp-for="Name"></label>
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Email"></label>
+							<input asp-for="Email" class="form-control" />
+							<span asp-validation-for="Email"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Password"></label>
+							<input asp-for="Password" class="form-control" />
+							<span asp-validation-for="Password"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="ConfirmPassword"></label>
+							<input asp-for="ConfirmPassword" class="form-control" />
+							<span asp-validation-for="ConfirmPassword"></span>
+						</div>
+						<button type="submit" class="btn btn-primary">Qeydiyyatdan keç</button>
+						<a asp-action="Index" class="btn btn-secondary">İmtina et</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

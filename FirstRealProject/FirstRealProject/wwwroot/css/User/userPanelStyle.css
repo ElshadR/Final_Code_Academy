@@ -1,0 +1,224 @@
+﻿
+body .mainContainer .user-panel header {
+    margin: 0;
+    width: 100%;
+}
+body .mainContainer .user-panel header .top-head {
+    padding:20px 32px;
+    color: #012f3f;
+}
+body .mainContainer .user-panel header .top-head h2 {
+    display:inline-block;
+    color: #012f3f;
+    margin: 0;
+}
+    body .mainContainer .user-panel header .top-head ul li span {
+        font-size: 17px;
+        margin-left: 5px;
+    }
+    body .mainContainer .user-panel header .bottom-head {
+        padding: 0px 32px;
+        display: flex;
+        background: rgba(241,241,241,0.3);
+    }
+    body .mainContainer .user-panel header .bottom-head .nav .nav-item a{
+        cursor:pointer;
+    }
+body .mainContainer .user-panel .contentt {
+    margin: 20px;
+    background: rgba(241,241,241,0.3);
+    min-height: 300px;
+}
+    body .mainContainer .user-panel .contentt .announceButton {
+        background: #224285;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-weight: 500;
+        width: 230px;
+        transition: 0.2s ease-in;
+        color: #fff;
+        text-decoration: none;
+        line-height: 1;
+    }
+            body .mainContainer .user-panel .contentt .announceButton:hover {
+                background: #012f3f;
+            }
+            body .mainContainer .user-panel .contentt .announceButton i {
+                color: #fff;
+                margin-right:5px;
+            }
+    body .mainContainer .user-panel .content p {
+        font-size: 17px;
+        color: #012f3f;
+    }
+
+
+body .mainContainer  .user-panel  .pageSubHeader {
+    background: #224285;
+    border-bottom: 1px solid #5975b0;
+    margin-bottom: 25px;
+}
+
+    body .mainContainer  .user-panel  .pageSubHeader h2 {
+        margin: 0;
+        padding: 10px;
+        color: #fff;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+        body .mainContainer  .user-panel  .pageSubHeader h2 span {
+            text-transform: uppercase;
+            color: #ffbf00;
+        }
+
+    body .mainContainer  .user-panel  .pageSubHeader a {
+        margin: 0 20px 0 0;
+        color: #ffbf00;
+        text-decoration: none;
+        transition: all .3s ease;
+    }
+
+        body .mainContainer  .user-panel  .pageSubHeader a:hover {
+            color: #fff;
+        }
+body .mainContainer .user-panel .announceProduct{
+ margin: auto;
+    width: 935px;
+}
+body .mainContainer .user-panel .announceProduct .announceItem {
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 0px 5px 0px 5px;
+    position:relative;
+   
+}
+ody .mainContainer .user-panel .announceProduct .announceItem .select {
+    cursor: pointer;
+}
+
+body .mainContainer .user-panel .announceProduct .announceItem .select-announce {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    color: white;
+    z-index: 5;
+}
+    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce {
+        display: inline-block;
+        width: 220px;
+        background: #224285;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .imagePost {
+            height: 140px;
+            margin-bottom: 10px;
+        }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel {
+                height: 100%;
+            }
+
+                body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel .carousel-inner {
+                    height: 100%;
+                }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel .carousel-inner item {
+                        height: 100%;
+                    }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .imagePost img {
+                width: 100%;
+            }
+
+        body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce:hover {
+            background: #012f3f;
+        }
+
+        body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details {
+            margin-bottom: 10px;
+            padding: 0px 20px;
+        }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productName {
+                margin: 0;
+                font-size: 16px;
+                color: #fff;
+            }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productPrice {
+                margin: 0px 0px 10px 0px;
+                font-size: 17px;
+                font-weight: 500;
+                color: #ffbf00;
+            }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productDescription ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+                body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productDescription ul li {
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productDescription ul li p {
+                        display: inline-block;
+                        margin: 0;
+                        font-weight: 500;
+                        color: #ffbf00;
+                    }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .details .productDescription ul li span {
+                        color: #fff;
+                    }
+
+        body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn {
+            margin-bottom: 10px;
+        }
+
+            body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+                body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul li {
+                    flex-grow: 1;
+                    float: left;
+                    margin: 0px 5px;
+                    background: #012f3f;
+                    line-height: 30px;
+                    text-align: center;
+                    transition: 0.2s;
+                    cursor: pointer;
+                    color: #fff;
+                    border-radius: 6px;
+                }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul li .infoBtn {
+                        display: block;
+                        height: 33px;
+                        padding: 0 10px;
+                        text-decoration: none;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        font-size: 11px;
+                    }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul li > a {
+                        color: #fff;
+                    }
+
+                    body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul li:hover {
+                        background: #ffbf00;
+                    }
+
+                        body .mainContainer  .user-panel  .announceProduct .announceItem .entryAnnounce .viewBtn ul li:hover .infoBtn {
+                            color: #012f3f;
+                        }

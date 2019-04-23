@@ -1,0 +1,181 @@
+﻿@model IEnumerable<FirstRealProject.Models.Real_Estates.ApartmentModels.Apartment>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RSAnnounceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartamentLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceAddedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceEndedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncePublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceViewCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncePinCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceUniqueCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncePublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceCheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceEnded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RSAnnounceType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartamentLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceAddedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceEndedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnouncePublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceViewCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnouncePinCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceUniqueCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnouncePublished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceCheckIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnounceEnded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppUser.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

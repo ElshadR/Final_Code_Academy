@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/User/userLoginStyle.css" />
+    <link rel="stylesheet" href="~/css/User/userRegisterStyle.css" />
+    <link rel="stylesheet" href="~/css/User/userPanelStyle.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <title>Index</title>
+</head>
+
+<body>
+    <a asp-area="Admin" asp-controller="Account" asp-action="Login">Admin panele giris</a>
+
+    <div class="mainContainer">
+        <!-- Header start -->
+        <header>
+            <section class="topHead">
+                <div class="topLeft">
+                    <h5>Texniki dəstək: gmail@gmail.com</h5>
+                </div>
+                <div class="topRight">
+                    <div class="socialIcons">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    @*<div class="language">
+                            <select class="selectpicker">
+                                <option data-content='<span class="flag-icon flag-icon-us"></span> English'>AZ</option>
+                                <option data-content='<span class="flag-icon flag-icon-mx"></span> Español'>RU</option>
+                            </select>
+                        </div>*@
+                </div>
+            </section>
+            <partial name="_LoginPartial" />
+            @await Component.InvokeAsync("Menu")
+        </header>
+        <!-- Header end -->
+        @RenderBody()
+        <div class="modals">
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Elanı düzəliş et</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-area="" asp-controller="home" asp-action="editannounce" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="" />
+                                    <input type="hidden" name="FindTable" value="" />
+                                    <input type="password" class="form-control" name="AnnouncePinCode" id="inputPassword1" placeholder="Elanın PİN kodu">
+                                </div>
+                            </form>
+                            <p><a href="#" class="tooltip-test" title="Tooltip">PIN kodu unutmusunuz?</a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Düzəliş elə</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Elanı sil</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-area="" id="modaldeleteform" asp-controller="home" asp-action="index" method="get">
+                                <div class="form-group">
+                                    <input id="deletemodalid" type="hidden" name="id" value="" />
+                                    <input id="deletetablename" type="hidden" name="FindTable" value="" />
+                                    <input type="password" class="form-control" name="AnnouncePinCode" id="inputPassword2" placeholder="Elanın PİN kodu">
+                                    <span id="deleteMessage" style="font-size:14px; color:#c33;"></span>
+                                </div>
+                            </form>
+                            <p><a href="#" class="tooltip-test" title="Tooltip">PIN kodu unutmusunuz?</a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="modalDeleteBtn" class="btn btn-primary">Elanı sil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalVip" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Elanı vip et</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-area="" asp-controller="home" asp-action="addvipannounce" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="" />
+                                    <input type="hidden" name="FindTable" value="" />
+                                    <input type="password" class="form-control" name="AnnouncePinCode" id="inputPassword3" placeholder="Elanın PİN kodu">
+                                </div>
+                            </form>
+                            <p><a href="#" class="tooltip-test" title="Tooltip">PIN kodu unutmusunuz?</a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Elanı vip et</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalPremium" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Elanı premium et</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-area="" asp-controller="home" asp-action="addpremiumannounce" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="id" value="" />
+                                    <input type="hidden" name="FindTable" value="" />
+                                    <input type="password" class="form-control" name="AnnouncePinCode" id="inputPassword4" placeholder="Elanın PİN kodu">
+                                </div>
+                            </form>
+                            <p><a href="#" class="tooltip-test" title="Tooltip">PIN kodu unutmusunuz?</a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Elanı premium et</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer start -->
+        <footer>
+            <div class="footerLeft">
+                <div class="footerText">
+                    <p>Administrasiya saytda yerləşdirilən banner və reklam məzmununa görə məsuliyyət daşımır.</p>
+                    <p>
+                        Hər hansı bir məlumatı, materialı və fotoşəkili administrasiyanın yazılı icazəsi olmadan istifadə etmək qeyri-qanuni hesab ediləcək və Azərbaycan Respublikasının Qanunlarına əsasən cəzalandırılacaqdır.
+                    </p>
+                </div>
+                <div class="socialIcons">
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footerInfo">
+                    <p><i class="far fa-copyright"></i>Copyright 2018 Turbo.Az <span>Müəllif hüquqları qorunur.</span></p>
+                </div>
+            </div>
+            <div class="footerRight">
+                <div class="contactUs">
+                    <h2>Bizimlə əlaqə</h2>
+                    <div class="contactForm">
+                        <form asp-area="" asp-action="comment" asp-controller="home" method="post" id="commentForm">
+                            <div class="formContent">
+                                <div class="formEmail">
+                                    <label for="">E-poçtunuzu daxil edin *</label>
+                                    <input type="email" required id="commentEmail">
+                                </div>
+                                <div class="formComment">
+                                    <label for="">Mətn</label>
+                                    <textarea id="commentDescription" required cols="44" rows="5"></textarea>
+                                </div>
+                                <div class="commentSubmit">
+                                    <input type="submit" id="commentSubmint" value="Göndər">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- Footer end -->
+        <a asp-area="" asp-controller="home" asp-action="compairannounces" id="compairButton">Müqayisə et</a>
+    </div>
+
+    <!-- add bootstrap start -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- add bootstrap end -->
+    <!-- add jquery start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- add jquery end -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- my javascript start -->
+    <script src="~/js/main.js"></script>
+    <!-- my javascript end -->
+    <script src="~/js/product-details.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

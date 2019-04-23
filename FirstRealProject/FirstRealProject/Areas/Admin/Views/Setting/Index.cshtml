@@ -1,0 +1,1650 @@
+﻿@model SettingModel
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" asp-route-findtable="@FindTableA.Common">Əsas səhifə</a>
+        </li>
+        <li class="breadcrumb-item active">Elanların dəyişməyən məlumatları</li>
+    </ol>
+    <div class="row" justify-content-center align-items-center">
+
+        <div class="col-md-4">
+            <ul class="sidebar navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Ümumi</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="100" id="findPanel">Şəhər</a>
+                        <a class="dropdown-item" data-id="101" id="findPanel">Daşınmaz əmlakın tipi</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Avtobus</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="4" id="findPanel">Malın Növü</a>
+                        <a class="dropdown-item" data-id="5" id="findPanel">Marka</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Motosiklet və moped</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="7" id="findPanel">Malın Növü</a>
+                        <a class="dropdown-item" data-id="6" id="findPanel">Marka</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Aksesuar</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="8" id="findPanel">Malın Növü</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Mənzil</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="9" id="findPanel">Binanın tipi</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Villa və bağ evi</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="10" id="findPanel">Əmlakın növü</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Ofiss</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="11" id="findPanel">Əmlakın növü</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Torpaq</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Qaraj</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>İş</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="12" id="findPanel">Fəaliyyət sahəsi</a>
+                        <a class="dropdown-item" data-id="13" id="findPanel">Elanın növü</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Biznes üçün avadanlıq</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" data-id="14" id="findPanel">Malın növü</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Ərzaq</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        @*====================Apartment=====================*@
+        <div class="col-md-8 panel-100" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Şəhər adı</label>
+                        <input type="text" class="form-control" id="nameCityA" />
+                        <span id="errorMsgCityA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveCityA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.Cities != null && Model.Cities.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupCity" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.Cities)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editCityA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteCityA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        @*====================Apartment=====================*@
+        <div class="col-md-8 panel-101" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Dasınmaz emlakin tipinin adi</label>
+                        <input type="text" class="form-control" id="nameRETypeA" />
+                        <span id="errorMsgRETypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveRETypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.RETypes != null && Model.RETypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupREType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.RETypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editRETypeA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteRETypeA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        @*====================Car=====================*@
+
+        <div class="col-md-8 panel-1" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameCarMakeA" />
+                        <span id="errorMsgCarMakeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveCarMakeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.CarMakes != null && Model.CarMakes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupCarMake" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.CarMakes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editCarMakeA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteCarMakeA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+            @*====================Menzil=====================*@
+        </div>
+        <div class="col-md-8 panel-2" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameCarModelA" />
+                        <span id="errorMsgCarModelA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Makes</label>
+                        <select class="form-control" id="carModelMakes">
+                            <option value="0" hidden disabled selected>Siyahıdan seçin</option>
+                            @foreach (var item in Model.CarMakes)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                        <span id="errorMsgCarModelMakeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveCarModelA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.CarModels != null && Model.CarModels.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupCarModel" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.CarModels)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editCarModelA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteCarModelA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 panel-3" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Kuzov növü</label>
+                        <input type="text" class="form-control" id="nameCarBodyTypeA" />
+                        <span id="errorMsgCarBodyTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveCarBodyTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.CarBodyTypes != null && Model.CarBodyTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupCarBodyType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carBodyType in Model.CarBodyTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carBodyType.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editCarBodyTypeA" data-id="@carBodyType.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteCarBodyTypeA" data-id="@carBodyType.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        @*====================Bus=====================*@
+
+        <div class="col-md-8 panel-4" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Malin növü</label>
+                        <input type="text" class="form-control" id="nameBusBodyTypeA" />
+                        <span id="errorMsgBusBodyTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+
+                    <button class="btn btn-success float-right" id="saveBusBodyTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.BusBodyTypes != null && Model.BusBodyTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupBusBodyType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.BusBodyTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editBusBodyTypeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteBusBodyTypeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 panel-5" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameBusMakeA" />
+                        <span id="errorMsgBusMakeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveBusMakeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.BusMakes != null && Model.BusMakes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupBusMake" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.BusMakes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editBusMakeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteBusMakeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 panel-6" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameMotocycleMakeA" />
+                        <span id="errorMsgMotocycleMakeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveMotocycleMakeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.MotocycleMakes != null && Model.MotocycleMakes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupMotocycleMake" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.MotocycleMakes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editMotocycleMakeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteMotocycleMakeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 panel-7" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Malın növü</label>
+                        <input type="text" class="form-control" id="nameMotocycleBodyTypeA" />
+                        <span id="errorMsgMotocycleBodyTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveMotocycleBodyTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.MotocycleBodyTypes != null && Model.MotocycleBodyTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupMotocycleBodyType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.MotocycleBodyTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editMotocycleBodyTypeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteMotocycleBodyTypeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 panel-8" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Malın növü</label>
+                        <input type="text" class="form-control" id="nameAccessoryTypeA" />
+                        <span id="errorMsgAccessoryTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveAccessoryTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.AccessoryTypes != null && Model.AccessoryTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupAccessoryType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.AccessoryTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editAccessoryTypeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteAccessoryTypeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*====================Apartment=====================*@
+        <div class="col-md-8 panel-9" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameApartmentTypeA" />
+                        <span id="errorMsgApartmentTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveApartmentTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.ApartmentTypes != null && Model.ApartmentTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupApartmentType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.ApartmentTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editApartmentTypeA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteApartmentTypeA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*====================House=====================*@
+
+        <div class="col-md-8 panel-10" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameHouseTypeA" />
+                        <span id="errorMsgHouseTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveHouseTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.HouseTypes != null && Model.HouseTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupHouseType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var make in Model.HouseTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @make.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editHouseTypeA" data-id="@make.Id" asp-route-findTable="@FindTable.Car"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteHouseTypeA" data-id="@make.Id" data-findtable="@FindTable.Car"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*====================Offis=====================*@
+        <div class="col-md-8 panel-11" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Kuzov növü</label>
+                        <input type="text" class="form-control" id="nameOfficeTypeA" />
+                        <span id="errorMsgOfficeTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveOfficeTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.OfficeTypes != null && Model.OfficeTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupOfficeType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carBodyType in Model.OfficeTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carBodyType.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editOfficeTypeA" data-id="@carBodyType.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteOfficeTypeA" data-id="@carBodyType.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*====================Job=====================*@
+        <div class="col-md-8 panel-12" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Malin növü</label>
+                        <input type="text" class="form-control" id="nameJobActivityAreaA" />
+                        <span id="errorMsgJobActivityAreaA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+
+                    <button class="btn btn-success float-right" id="saveJobActivityAreaA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.JobActivityAreas != null && Model.JobActivityAreas.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupJobActivityArea" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.JobActivityAreas)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editJobActivityAreaA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteJobActivityAreaA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 panel-13" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameJobTypeA" />
+                        <span id="errorMsgJobTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveJobTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.JobTypes != null && Model.JobTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupJobType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.JobTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editJobTypeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteJobTypeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        @*====================Business=====================*@
+        <div class="col-md-8 panel-14" style="display:none;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="inputstate" class="col-form-label">Marka</label>
+                        <input type="text" class="form-control" id="nameBusinessTypeA" />
+                        <span id="errorMsgBusinessTypeA" style="color: #c33;font-size: 13px;display:none;">Boş olmamalıdı.</span>
+                    </div>
+                    <button class="btn btn-success float-right" id="saveBusinessTypeA">Yadda saxla</button>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.BusinessTypes != null && Model.BusinessTypes.Count() != 0)
+                    {
+                        <ul class="list-group" id="listGroupBusinessType" style="max-height: 491px;overflow: auto;">
+
+                            @foreach (var carmodel in Model.BusinessTypes)
+                            {
+
+
+                                <li class="list-group-item">
+                                    @carmodel.Name
+                                    <div class=" float-right">
+                                        <button type="button" class="btn btn-success" title="Edit" id="editBusinessTypeA" data-id="@carmodel.Id"><i class="far fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" title="Delete" id="deleteBusinessTypeA" data-id="@carmodel.Id"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{ 
+<script>
+    var panel=null;
+    $(document).on("click", "#findPanel", function () {
+        var t = $(this).data("id");
+        var panelName = ".panel-" + t;
+        
+        if (panel != null) {
+            panel.css("display", "none");
+            $(panelName).css("display", "block");
+            panel = $(panelName);
+        }
+        else {
+            $(panelName).css("display", "block");
+            panel = $(panelName);
+        }
+    })
+    $(document).on("click", "#saveCarMakeA", function () {
+        debugger
+        var h = $("#nameCarMakeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgCarMakeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddCarMake",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgCarMakeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupCarMake").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editCarMakeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteCarMakeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                        $("#carModelMakes").append(`<option value="${data.id}">${data.name}</option>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgCarMakeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteCarMakeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteCarMake",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+    $(document).on("click", "#saveCarModelA", function () {
+        debugger
+        var h = $("#nameCarModelA");
+        var g = $("#carModelMakes");
+        var name = $("#nameCarModelA").val();
+        var makeId = $("#carModelMakes").val();
+        if (makeId != 0 && makeId!=null) {
+
+            $("#errorMsgCarModelMakeA").css("display", "none")
+            if (name != "" && name != null) {
+                $("#errorMsgCarModelA").css("display", "none")
+                $.ajax(
+                    {
+                        url: "/admin/setting/AddCarModel",
+                        method: "POST",
+                        data: { name: name, makeId: makeId }
+                    })
+                    .done(function (data) {
+                        if (data == "fail") {
+                            $("#errorMsgCarModelA").css("display", "block")
+                        }
+                        else {
+                            $("#listGroupCarModel").append(`<li class="list-group-item">${data.name}
+                                <div class=" float-right">
+                                <button type="button" class="btn btn-success" title="Edit" id="editCarModelA" data-id="${data.id}"><i class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" title="Delete" id="deleteCarModelA" data-id="${data.id}"><i class="fas fa-trash-alt"></i></button>
+                            </li>`)
+                            h.val("");
+                            g.val("0")
+                        }
+                    })
+                    .fail(function (msg) {
+                        console.log(msg);
+                    })
+            }
+            else {
+                $("#errorMsgCarModelA").css("display", "block")
+            }
+        }
+        else {
+            $("#errorMsgCarModelMakeA").css("display", "block")
+
+        }
+        
+    })
+    $(document).on("click", "#deleteCarModelA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteCarModel",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+    $(document).on("click", "#saveCarBodyTypeA", function () {
+        debugger
+        var h = $("#nameCarBodyTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgCarBodyTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddCarBodyType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgCarBodyTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupCarBodyType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editCarBodyTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteCarBodyTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgCarBodyTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteCarBodyTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteCarBodyType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveBusBodyTypeA", function () {
+        debugger
+        var h = $("#nameBusBodyTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgBusBodyTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddBusBodyType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgBusBodyTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupBusBodyType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editBusBodyTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteBusBodyTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgBusBodyTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteBusBodyTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteBusBodyType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+    $(document).on("click", "#saveBusMakeA", function () {
+        debugger
+        var h = $("#nameBusMakeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgBusMakeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddBusMake",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgBusMakeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupBusMake").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editBusMakeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteBusMakeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgBusMakeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteBusMakeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteBusMake",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveMotocycleMakeA", function () {
+        debugger
+        var h = $("#nameMotocycleMakeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgMotocycleMakeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddMotocycleMake",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgMotocycleMakeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupMotocycleMake").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editMotocycleMakeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteMotocycleMakeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgMotocycleMakeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteMotocycleMakeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteMotocycleMake",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveMotocycleBodyTypeA", function () {
+        debugger
+        var h = $("#nameMotocycleBodyTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgMotocycleBodyTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddMotocycleBodyType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgMotocycleBodyTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupMotocycleBodyType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editMotocycleBodyTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteMotocycleBodyTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgMotocycleBodyTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteMotocycleBodyTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteMotocycleBodyType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveAccessoryTypeA", function () {
+        debugger
+        var h = $("#nameAccessoryTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgAccessoryTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddAccessoryType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgAccessoryTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupAccessoryType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editAccessoryTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteAccessoryTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgAccessoryTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteAccessoryTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteAccessoryType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveApartmentTypeA", function () {
+        debugger
+        var h = $("#nameApartmentTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgApartmentTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddApartmentType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgApartmentTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupApartmentType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editApartmentTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteApartmentTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgApartmentTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteApartmentTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteApartmentType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveHouseTypeA", function () {
+        debugger
+        var h = $("#nameHouseTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgHouseTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddHouseType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgHouseTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupHouseType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editHouseTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteHouseTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgHouseTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteHouseTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteHouseType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveOfficeTypeA", function () {
+        debugger
+        var h = $("#nameOfficeTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgOfficeTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddOfficeType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgOfficeTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupOfficeType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editOfficeTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteOfficeTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgOfficeTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteOfficeTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteOfficeType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveJobActivityAreaA", function () {
+        debugger
+        var h = $("#nameJobActivityAreaA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgJobActivityAreaA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddJobActivityArea",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgJobActivityAreaA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupJobActivityArea").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editJobActivityAreaA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteJobActivityAreaA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgJobActivityAreaA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteJobActivityAreaA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteJobActivityArea",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+    $(document).on("click", "#saveJobTypeA", function () {
+        debugger
+        var h = $("#nameJobTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgJobTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddJobType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgJobTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupJobType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editJobTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteJobTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgJobTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteJobTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteJobType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveBusinessTypeA", function () {
+        debugger
+        var h = $("#nameBusinessTypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgBusinessTypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddBusinessType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgBusinessTypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupBusinessType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editBusinessTypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteBusinessTypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgBusinessTypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteBusinessTypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteBusinessType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveCityA", function () {
+        debugger
+        var h = $("#nameCityA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgCityA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddCity",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgCityA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupCity").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editCityA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteCityA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgCityA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteCityA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteCity",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+
+    $(document).on("click", "#saveRETypeA", function () {
+        debugger
+        var h = $("#nameRETypeA");
+        var name = h.val();
+        if (name != "" && name != null) {
+            $("#errorMsgRETypeA").css("display", "none")
+            $.ajax(
+                {
+                    url: "/admin/setting/AddREType",
+                    method: "POST",
+                    data: { name: name }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+                        $("#errorMsgRETypeA").css("display", "block")
+                    }
+                    else {
+                        h.val("");
+                        $("#listGroupREType").append(`<li class="list-group-item">${data.name}
+                            <div class=" float-right">
+                            <button type="button" class="btn btn-success" title="Edit" id="editRETypeA" asp-route-id="${data.id}" ><i class="far fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger" title="Delete" id="deleteRETypeA" data-id="${data.id}" ><i class="fas fa-trash-alt"></i></button>
+                        </li>`)
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+        else {
+            $("#errorMsgRETypeA").css("display", "block")
+        }
+    })
+    $(document).on("click", "#deleteRETypeA", function () {
+        debugger
+        var item = $(this).parent().parent();
+        var id = $(this).data("id");
+        if (id != 0) {
+            $.ajax(
+                {
+                    url: "/admin/setting/DeleteREType",
+                    method: "POST",
+                    data: { id: id }
+                })
+                .done(function (data) {
+                    if (data == "fail") {
+
+                    }
+                    else {
+                        item.remove();
+                    }
+                })
+                .fail(function (msg) {
+                    console.log(msg);
+                })
+        }
+    })
+    </script>
+}
+

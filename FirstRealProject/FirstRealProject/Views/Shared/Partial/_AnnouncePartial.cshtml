@@ -1,0 +1,825 @@
+﻿@model IEnumerable<ViewAnnounce>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@foreach (var announce in Model)
+{
+    if (FindTable.Car == announce.FindTable)
+    {
+        <div class="announceItem">
+
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-car" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-car" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-car" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-car" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+
+        </div>
+    }
+    else if (FindTable.Bus == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-bus" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-bus" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-bus" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-bus" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn" >Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Motocycle == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-motocycle" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-motocycle" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-motocycle" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-motocycle" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Accessory == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-accessory" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-accessory" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-accessory" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-accessory" target="_blank" asp-controller="transport" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Apartment == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-apartment" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-apartment" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-apartment" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-apartment" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.House == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-house" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-house" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-house" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-house" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Office == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-office" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-office" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-office" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-office" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Land == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-land" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-land" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-land" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-land" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Garage == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-garage" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-garage" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-garage" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-garage" target="_blank" asp-controller="real-estate" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Job == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-job" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-job" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-job" target="_blank" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-job" target="_blank" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Business == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-business" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-business" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" asp-action="announce-business" target="_blank" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" asp-action="announce-business" target="_blank" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+    else if (FindTable.Food == announce.FindTable)
+    {
+        <div class="announceItem">
+            <article class="entryAnnounce">
+                @if (announce.Photos.Count() != 0)
+                {
+                    <div class="imagePost">
+                        <div id="myCarousel" class="carousel slide" data-interval="500">
+                            <div class="carousel-inner" role="listbox">
+
+                                @foreach (var photo in announce.Photos)
+                                {
+                                    if (announce.ActivePhoto.Path == photo.Path)
+                                    {
+                                        <div class="item active">
+                                            <a asp-area="" target="_blank" asp-action="announce-food" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a asp-area="" target="_blank" asp-action="announce-food" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode"><img src="@photo.Path" alt="Chania" width="460" height="345"></a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <a asp-area="" target="_blank" asp-action="announce-food" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode">
+                    <div class="details">
+                        <p class="productName">@announce.Name</p>
+                        <p class="productPrice">@announce.Price AZN</p>
+                        <div class="productDescription">
+                            <ul>
+                                <li>
+                                    <p>Şəhər:</p>
+                                    <span>@announce.City</span>
+                                </li>
+                                <li>
+                                    <p>Tarix:</p>
+                                    <span>@announce.AddedPublishDate.Value.ToString("dd MMMM yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <div class="viewBtn">
+                    <ul>
+                        <li><a asp-area="" target="_blank" asp-action="announce-food" asp-controller="jobs" asp-route-id="@announce.Id" asp-route-unicode="@announce.AnnounceUnicode" class="infoBtn">Ətraflı</a></li>
+                        <li class="comparison" data-id="@announce.Id" data-tablename="@announce.FindTable"><span class="infoBtn">Müqayisə</span></li>
+                    </ul>
+                </div>
+            </article>
+            @if (announce.SelectedAnnounce)
+            {
+                <div class="select-announce">
+                    <i class="fas fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+            else
+            {
+                <div class="select-announce">
+                    <i class="far fa-star select" data-id="@announce.Id" data-tablename="@announce.FindTable"></i>
+                </div>
+            }
+        </div>
+    }
+}

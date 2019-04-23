@@ -1,0 +1,171 @@
+﻿@model GarageEditModel
+@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Garages";
+}
+
+<h4 class="ml-4">Qarajlar</h4>
+
+<div class="container-fluid">
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Elanın məlumatları
+        </div>
+        <div class="card-body">
+            <div class="table-responsive-sm">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4">Xanaları doldurun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-10 col-md-5 ">
+                                                <form asp-area="Admin" asp-controller="realestate" asp-action="garageedit" method="post">
+                                                    <input type="hidden" name="id" value="@Model.Id" />
+                                                    <input type="hidden" name="id" value="@Model.AppUserId" />
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Şəhər</label>
+                                                        <select id="inputState" disabled class="form-control col-12 col-md-7" asp-for="CityId">
+                                                            @foreach (var item in Model.Cities)
+                                                            {
+                                                                if (Model.CityId == item.Id)
+                                                                {
+                                                                    <option selected value="@item.Id">@item.Name</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Elanın tipi</label>
+                                                        <select id="inputState" disabled class="form-control col-12 col-md-7" asp-for="PaymentTypeId">
+                                                            @foreach (var item in Model.PaymentTypes)
+                                                            {
+                                                                if (Model.PaymentTypeId == item.Id)
+                                                                {
+                                                                    <option selected value="@item.Id">@item.Name</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Elanın adı</label>
+                                                        <input disabled type="text" asp-for="AnnounceName" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Yerləşmə yeri</label>
+                                                        <input disabled type="text" asp-for="GarageLocation" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Sahə</label>
+                                                        <input disabled type="number" asp-for="Area" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Qiymət</label>
+                                                        <input disabled type="number" asp-for="Price" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Elanın tipi</label>
+                                                        <select id="inputState" disabled class="form-control col-12 col-md-7" asp-for="AnnounceTypeId">
+                                                            @foreach (var item in Model.AnnounceTypes)
+                                                            {
+                                                                if (Model.AnnounceTypeId == item.Id)
+                                                                {
+                                                                    <option selected value="@item.Id">@item.Name</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Person type</label>
+                                                        <select id="inputState" disabled class="form-control col-12 col-md-7" asp-for="PersonTypeId">
+                                                            @foreach (var item in Model.PersonTypes)
+                                                            {
+                                                                if (Model.PersonTypeId == item.Id)
+                                                                {
+                                                                    <option selected value="@item.Id">@item.Name</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Email</label>
+                                                        <input disabled type="text" asp-for="Email" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Number</label>
+                                                        <input disabled type="text" asp-for="PhoneNumber" class="form-control col-12 col-md-7">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputState" class="col-12 col-md-5 col-form-label">Description</label>
+                                                        <textarea disabled id="commentDescription" asp-for="Description" required cols="44" rows="5"></textarea>
+                                                    </div>
+                                                    <div class="form-group row justify-content-end">
+                                                        <div class="form-check col-12 col-md-4">
+                                                            <input disabled type="checkbox" asp-for="AnnounceCheckIn" class="form-control  col-12 col-md-7">
+                                                            <label class="form-check-label col-11 col-md-9">
+                                                                Yoxlanıldı
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check col-12 col-md-4">
+                                                            <input disabled type="checkbox" asp-for="AnnouncePublished" class="form-control col-12 col-md-7">
+                                                            <label class="form-check-label col-11 col-md-9" for="gridCheck">
+                                                                Derc olunsunmu?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container">
+                                                        <h2>Gallery</h2>
+                                                        <div class="row">
+                                                            @foreach (var item in Model.GaragePhotos)
+                                                            {
+                                                                <div class="col-md-4">
+                                                                    <div class="thumbnail">
+                                                                        <a id="announcePhotoA" href="">
+                                                                            <img src="@item.Path" alt="Lights" style="width:100%">
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

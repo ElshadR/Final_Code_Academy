@@ -1,0 +1,105 @@
+﻿@model UserViewModel
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="user-panel">
+    <header>
+        <div class="top-head">
+            <ul class="nav">
+                <li class="nav-item active d-flex justify-content-between align-items-center ">
+                    <h2>Mənim elanlarım</h2>
+                    <span class="badge badge-pill badge-info">@Model.CommonAnnounceCount</span>
+                    <span>@Model.UserName</span>
+                </li>
+            </ul>
+
+
+        </div>
+        <div class="bottom-head navbar">
+            <ul class="nav">
+                <li class="nav-item active d-flex justify-content-between align-items-center ">
+                    <a class="navbar-link user-announce-type" data-val="published">
+                        Dərc olunmuş
+                        <span class="badge badge-primary badge-pill">@Model.PublishedAnnounces.Count</span>
+                    </a>
+                </li>
+                <li class="nav-item d-flex justify-content-between align-items-center">
+                    <a class="navbar-link user-announce-type" data-val="ended">
+                        Muddəti başa çatmışlar
+                        <span class="badge badge-primary badge-pill">@Model.EndedAnnounces.Count</span>
+                    </a>
+                </li>
+                <li class="nav-item d-flex justify-content-between align-items-center">
+                    <a class="navbar-link user-announce-type" data-val="checkin">
+                        Yoxlanılır
+                        <span class="badge badge-primary badge-pill">@Model.CheckInAnnounces.Count</span>
+                    </a>
+                </li>
+                <li class="nav-item d-flex justify-content-between align-items-center">
+                    <a class="navbar-link user-announce-type" data-val="nonpublished">
+                        Dərc olunmamış
+                        <span class="badge badge-primary badge-pill">@Model.NonPublishedAnnounces.Count</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    @if (Model.CommonAnnounceCount == 0)
+    {
+        <div class="contentt row justify-content-center align-items-center">
+
+            <div>
+                <p>Bu bölmədə elan yoxdur.</p>
+                <a asp-area="" asp-action="index" asp-controller="new-announce" class="announceButton  justify-content-center align-items-center"><i class="fas fa-plus"></i>Elan yerləşdir</a>
+            </div>
+        </div>
+    }
+    else if (Model.CommonAnnounceCount != 0)
+    {
+        <div class="announceProduct">
+            @await Html.PartialAsync("~/Views/Shared/Partial/_AnnouncePartial.cshtml", Model.PublishedAnnounces)
+        </div>
+    }
+
+</section>
+@section Scripts{
+
+    $(".navbar-link").click(function (event) {
+    event.preventDefault();
+    });
+    <script>
+        var type;
+        $(document).on('click', '.user-announce-type', function () {
+            type = $(this).data('val')
+            FetchDataFromServer()
+        })
+        
+        function FetchDataFromServer() {
+
+            $.ajax({
+                url: "/user/home/announces",
+                data: {
+                    type: type,
+                },
+                datatype: 'json',
+                success: function (data) {
+                    if (data === "stop" || data.count < 8) {
+                        hasMoreRecords = false; // signal no more records to display
+                    }
+                    else {
+                        
+                        $(".announceProduct").html(data);
+                        // update for next iteration
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,1961 @@
+
+
+
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    position: absolute;
+    border-top: 6px solid #3498db;
+    width: 40px;
+    height: 40px;
+    left: 40%;
+    top: 40%;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+.MyContainer, body .mainContainerNewAnnounce header .topHead, body .mainContainerNewAnnounce header .middleHead, body .mainContainerNewAnnounce header .bottomHead, body .mainContainerNewAnnounce .anounce-content .header, body .mainContainerNewAnnounce .anounce-content .lot-form, body .mainContainerNewAnnounce footer .myfooter {
+    margin: auto;
+    width: 935px;
+}
+
+body {
+  margin: 0 auto;
+  background: #f1f1f1;
+  color: #012f3f;
+  min-width: 800px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+    body .mainContainer {
+        background: rgba(0, 0, 0, 0.1);
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        width: 1000px;
+        position: relative;
+    }
+        body .mainContainer #compairButton {
+            position: fixed;
+            top: 600px;
+            padding: 5px 20px;
+            background: #ffbf00;
+            border-radius: 5px;
+            left: 5px;
+            z-index: 15;
+            display:none;
+        }
+body .mainContainer header {
+  margin: auto;
+  width: 935px;
+}
+body .mainContainer header .topHead {
+  padding: 15px 2px 15px 2px;
+}
+body .mainContainer header .topHead .topLeft {
+  display: inline-block;
+}
+body .mainContainer header .topHead .topLeft h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+body .mainContainer header .topHead .topRight {
+  float: right;
+}
+body .mainContainer header .topHead .topRight .socialIcons {
+  float: left;
+}
+body .mainContainer header .topHead .topRight .socialIcons ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainer header .topHead .topRight .socialIcons ul li {
+  float: left;
+  margin-right: 10px;
+}
+body .mainContainer header .topHead .topRight .socialIcons ul li a {
+  transition: 0.2s;
+  color: #012f3f;
+}
+body .mainContainer header .topHead .topRight .socialIcons ul li a:hover {
+  color: #ffbf00;
+}
+body .mainContainer header .topHead .topRight .language {
+  float: left;
+}
+body .mainContainer header .topHead .topRight .language .selectpicker {
+  border: none;
+}
+body .mainContainer header .middleHead .middleLeft {
+  display: inline-block;
+}
+body .mainContainer header .middleHead .middleLeft a {
+  font-size: 24px;
+  text-decoration: none;
+  color: #012f3f;
+}
+body .mainContainer header .middleHead .middleLeft a h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+body .mainContainer header .middleHead .middleRight {
+  float: right;
+}
+body .mainContainer header .middleHead .middleRight .middleNav {
+  float: left;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li {
+  float: left;
+  margin-left: 40px;
+  line-height: 45px;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #012f3f;
+  transition: 0.5s ease-in;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li a i {
+  margin-right: 5px;
+  color: #012f3f;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li .announceButton {
+  background: #224285;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 500;
+  width: 230px;
+  transition: 0.2s ease-in;
+  color: #fff;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li .announceButton i {
+  color: #fff;
+}
+body .mainContainer header .middleHead .middleRight .middleNav ul li .announceButton:hover {
+  background: #012f3f;
+}
+body .mainContainer header .bottomHead {
+  padding: 15px 0px 15px 0px;
+}
+body .mainContainer header .bottomHead .headerNav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+body .mainContainer header .bottomHead .headerNav ul li {
+  text-align: center;
+  flex-grow: 1;
+  float: left;
+  border-right: 1px solid #5975b0;
+  transition: 0.2s ease;
+  background: #224285;
+}
+body .mainContainer header .bottomHead .headerNav ul li .Home {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 12px 0px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+body .mainContainer header .bottomHead .headerNav ul li .Home:hover {
+  background: #012f3f;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button {
+  width: 100%;
+  font-size: 13px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  text-align: center;
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button > i {
+  padding: 5px;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button::focus {
+  outline: none;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button .zmdi-chevron-down {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button:hover {
+  background: #012f3f;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top left;
+  transform: scale(1, 0);
+  transition: all ease-in-out .3s;
+  z-index: 8;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1, 1);
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list > li {
+  width: 100%;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: #c1c1c1;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 5px;
+  background-color: #012f3f;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item {
+  display: block;
+  list-style-type: none;
+  background: #fff;
+  border-top: 1px solid #e6e6e6;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item > a {
+  padding: 7px 10px;
+  display: block;
+  font-size: 15px;
+  text-decoration: none;
+  color: #012f3f;
+  transition: all .3s ease;
+}
+body .mainContainer header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item > a:hover {
+  background: #012f3f;
+  color: #fff;
+}
+	body .mainContainer .QuickSearch {
+		margin: auto;
+		margin-bottom: 20px;
+		padding: 8px;
+		width: 935px;
+		background: #224285;
+	}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .form-row .form-group .labelCheck {
+			position: relative;
+			font-weight: 400;
+			width: 100%;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .form-row .form-group .labelCheck select {
+				width: 100%;
+				height: 35px;
+				color: #012f3f;
+				padding: 6px 11px;
+				border: none;
+				margin: 0;
+				background: #fff;
+				border-radius: 3px;
+				outline: none;
+				display: inline-block;
+				-webkit-appearance: none;
+				appearance: none;
+				cursor: pointer;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .form-row .form-group .labelCheck select option:hover {
+					color: red !important;
+					background: #012f3f !important;
+				}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .form-row .form-group .labelCheck:after {
+				content: "\f078";
+				font-family: "FontAwesome";
+				font-size: 12px;
+				color: #012f3f;
+				right: 8px;
+				top: 4px;
+				padding: 7px 0 2px;
+				position: absolute;
+				pointer-events: none;
+			}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchCategory {
+			display: inline-block;
+			width: 100%;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown {
+				position: relative;
+				display: inline-block;
+				width: 100%;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__button {
+					padding: 6px 0 3px 15px;
+					background-color: #fff;
+					color: #012f3f;
+					border: none;
+					outline: none;
+					border-radius: 3px;
+					cursor: pointer;
+					width: 100%;
+					text-align: left;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__button > i {
+						float: right;
+						padding: 5px;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__button::focus {
+						outline: none;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__button .zmdi-chevron-down {
+						position: absolute;
+						right: 10px;
+						top: 12px;
+					}
+
+                body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list {
+                    position: absolute;
+                    display: block;
+                    left: 0;
+                    right: 0;
+                    max-height: 300px;
+                    overflow: auto;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    opacity: 0;
+                    pointer-events: none;
+                    transform-origin: top left;
+                    transform: scale(1, 0);
+                    transition: all ease-in-out .3s;
+                    z-index: 2;
+                    max-height: 200px;
+                    background: rgb(34, 66, 133);
+                    color:white;
+                }
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list.active {
+						opacity: 1;
+						pointer-events: auto;
+						transform: scale(1, 1);
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list::-webkit-scrollbar {
+						width: 10px;
+						background-color: #f5f5f5;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list::-webkit-scrollbar-track {
+						width: 10px;
+						background-color: #c1c1c1;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list::-webkit-scrollbar-thumb {
+						width: 10px;
+						border-radius: 5px;
+						background-color: #012f3f;
+					}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list-item {
+					display: block;
+					list-style-type: none;
+					background: #fff;
+					border-top: 1px solid #e6e6e6;
+					font-size: 14px;
+					line-height: 1.4;
+					cursor: pointer;
+					transition: all ease-in-out .3s;
+                    border:0px;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list-item > a {
+						padding: 7px 10px;
+						display: block;
+						font-size: 15px;
+						text-decoration: none;
+						color: #012f3f;
+						transition: all .3s ease;
+					}
+
+						body .mainContainer .QuickSearch form .searchItemsRow .searchCategory .select-dropdown .select-dropdown__list-item > a:hover {
+							background: #012f3f;
+							color: #fff;
+						}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchName {
+			display: inline-block;
+			height: 35px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchName > input {
+				font-size: 15px;
+				height: 100%;
+				border-radius: 3px;
+				outline: none;
+				border: none;
+				color: #012f3f;
+				padding: 7px 10px;
+				width: 455px;
+			}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchCity {
+			float: right;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown {
+				position: relative;
+				display: inline-block;
+				max-width: 100%;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__button {
+					padding: 6px 0 3px 15px;
+					background-color: #fff;
+					color: #012f3f;
+					border: none;
+					outline: none;
+					border-radius: 3px;
+					cursor: pointer;
+					width: 210px;
+					text-align: left;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__button > i {
+						float: right;
+						padding: 5px;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__button::focus {
+						outline: none;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__button .zmdi-chevron-down {
+						position: absolute;
+						right: 10px;
+						top: 12px;
+					}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list {
+					position: absolute;
+					display: block;
+					left: 0;
+					right: 0;
+					max-height: 300px;
+					overflow: auto;
+					margin: 0;
+					padding: 0;
+					list-style-type: none;
+					opacity: 0;
+					pointer-events: none;
+					transform-origin: top left;
+					transform: scale(1, 0);
+					transition: all ease-in-out .3s;
+					z-index: 2;
+					max-height: 200px;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list.active {
+						opacity: 1;
+						pointer-events: auto;
+						transform: scale(1, 1);
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list::-webkit-scrollbar {
+						width: 10px;
+						background-color: #f5f5f5;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list::-webkit-scrollbar-track {
+						width: 10px;
+						background-color: #c1c1c1;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list::-webkit-scrollbar-thumb {
+						width: 10px;
+						border-radius: 5px;
+						background-color: #012f3f;
+					}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list-item {
+					display: block;
+					list-style-type: none;
+					background: #fff;
+					border-top: 1px solid #e6e6e6;
+					font-size: 14px;
+					line-height: 1.4;
+					cursor: pointer;
+					transition: all ease-in-out .3s;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list-item > span {
+						padding: 7px 10px;
+						display: block;
+						font-size: 15px;
+						text-decoration: none;
+						color: #012f3f;
+						transition: all .3s ease;
+					}
+
+						body .mainContainer .QuickSearch form .searchItemsRow .searchCity .select-dropdown .select-dropdown__list-item > span:hover {
+							background: #012f3f;
+							color: #fff;
+						}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchPrice {
+			width: 100%;
+			display: inline-block;
+			background: #fff;
+			border-radius: 3px;
+			height: 35px;
+			padding-right: 3px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchPrice > span {
+				font-size: 16px;
+				color: #012f3f;
+				padding: 5px;
+			}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchPrice .minMax {
+				display: inline-block;
+				height: 100%;
+				padding: 2px 0;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchPrice .minMax > input {
+					width: 87px;
+					border-radius: 3px;
+					border: none;
+					outline: none;
+					color: #012f3f;
+					border: 1px solid black;
+					height: 100%;
+					padding: 10px 7px 14px;
+					font-size: 14px;
+				}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchPrice .minMax > span {
+					color: #012f3f;
+					font-weight: bold;
+				}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchArea {
+			width: 100%;
+			display: inline-block;
+			background: #fff;
+			border-radius: 3px;
+			height: 35px;
+			padding-right: 3px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchArea > span {
+				font-size: 16px;
+				color: #012f3f;
+				padding: 5px;
+			}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchArea .minMax {
+				display: inline-block;
+				height: 100%;
+				padding: 2px 0;
+				padding-left: 13px;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchArea .minMax > input {
+					width: 87px;
+					border-radius: 3px;
+					border: none;
+					outline: none;
+					color: #012f3f;
+					border: 1px solid black;
+					height: 100%;
+					padding: 10px 7px 14px;
+					font-size: 14px;
+				}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchArea .minMax > span {
+					color: #012f3f;
+					font-weight: bold;
+				}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .checkboxArea {
+			width: 100%;
+			background: #fff;
+			border-radius: 3px;
+			height: 35px;
+			float: left;
+			line-height: 35px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .checkboxArea .minMax .check {
+				margin: 0;
+				padding: 0px 17px;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .checkboxArea .minMax .check > span {
+					color: #012f3f;
+					font-weight: 400;
+					margin: 0px 5px;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .checkboxArea .minMax .check > span > input {
+						margin: 0;
+						position: relative;
+						top: 2px;
+						width: 15px;
+						height: 15px;
+						cursor: pointer;
+					}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchLenghtRoom {
+			width: 100%;
+			display: inline-block;
+			background: #fff;
+			border-radius: 3px;
+			height: 35px;
+			padding-right: 3px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchLenghtRoom > span {
+				font-size: 16px;
+				color: #012f3f;
+				padding: 5px;
+			}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchLenghtRoom .minMax {
+				display: inline-block;
+				height: 100%;
+				padding: 2px 0;
+				padding-left: 19px;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchLenghtRoom .minMax > input {
+					width: 87px;
+					border-radius: 3px;
+					border: none;
+					outline: none;
+					color: #012f3f;
+					border: 1px solid black;
+					height: 100%;
+					padding: 10px 7px 14px;
+					font-size: 14px;
+				}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchLenghtRoom .minMax > span {
+					color: #012f3f;
+					font-weight: bold;
+				}
+
+		body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType {
+			display: inline-block;
+			float: left;
+			margin: 16px 0 0 27px;
+		}
+
+			body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown {
+				position: relative;
+				display: inline-block;
+				max-width: 100%;
+			}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__button {
+					padding: 6px 0 3px 15px;
+					background-color: #fff;
+					color: #616161;
+					border: none;
+					outline: none;
+					border-radius: 3px;
+					cursor: pointer;
+					text-align: left;
+					min-width: 150px;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__button > i {
+						float: right;
+						padding: 5px;
+						margin-left: 5px;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__button::focus {
+						outline: none;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__button .zmdi-chevron-down {
+						position: absolute;
+						right: 10px;
+						top: 12px;
+					}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list {
+					position: absolute;
+					display: block;
+					left: 0;
+					right: 0;
+					max-height: 300px;
+					overflow: auto;
+					margin: 0;
+					padding: 0;
+					list-style-type: none;
+					opacity: 0;
+					pointer-events: none;
+					transform-origin: top left;
+					transform: scale(1, 0);
+					transition: all ease-in-out .3s;
+					z-index: 2;
+					max-height: 200px;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list.active {
+						opacity: 1;
+						pointer-events: auto;
+						transform: scale(1, 1);
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list::-webkit-scrollbar {
+						width: 10px;
+						background-color: #f5f5f5;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list::-webkit-scrollbar-track {
+						width: 10px;
+						background-color: #c1c1c1;
+					}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list::-webkit-scrollbar-thumb {
+						width: 10px;
+						border-radius: 5px;
+						background-color: #f1f1f1;
+					}
+
+				body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list-item {
+					display: block;
+					list-style-type: none;
+					background: #fff;
+					border-top: 1px solid #e6e6e6;
+					font-size: 14px;
+					line-height: 1.4;
+					cursor: pointer;
+					transition: all ease-in-out .3s;
+				}
+
+					body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list-item > span {
+						padding: 7px 10px;
+						display: block;
+						font-size: 15px;
+						text-decoration: none;
+						color: #012f3f;
+						transition: all .3s ease;
+					}
+
+						body .mainContainer .QuickSearch form .searchItemsRow .searchPropertyType .select-dropdown .select-dropdown__list-item > span:hover {
+							background: #012f3f;
+							color: #fff;
+						}
+
+        body .mainContainer .QuickSearch form .searchItemsRow >div >div .searchBtn {
+            line-height: 35px;
+            display: inline-block;
+            height: 35px;
+            background: white;
+            width: 100px;
+            padding: 0px 0 0 15px;
+            float: right;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+        }
+
+            body .mainContainer .QuickSearch form .searchItemsRow >div >div .searchBtn > button {
+                font-size: 20px;
+                color: #012f3f;
+                line-height: 35px;
+                display: inline-block;
+                height: 35px;
+                background: white;
+                width: 100px;
+                padding: 0px 0 0 15px;
+                float: right;
+                cursor: pointer;
+                border: none;
+                border-radius: 3px;
+            }
+
+                body .mainContainer .QuickSearch form .searchItemsRow >div >div .searchBtn > button > i {
+                    font-size: 22px;
+                    color: #012f3f;
+                    float: right;
+                    margin: 7px;
+                }
+body .mainContainer .content {
+  margin: auto;
+  width: 935px;
+}
+body .mainContainer .content .allAnnounce .pageSubHeader {
+  background: #224285;
+  border-bottom: 1px solid #5975b0;
+  margin-bottom: 25px;
+}
+body .mainContainer .content .allAnnounce .pageSubHeader h2 {
+  margin: 0;
+  padding: 10px;
+  color: #fff;
+  font-weight: 500;
+  display:inline-block;
+}
+body .mainContainer .content .allAnnounce .pageSubHeader h2 span {
+  text-transform: uppercase;
+  color: #ffbf00;
+}
+    body .mainContainer .content .allAnnounce .pageSubHeader a {
+        margin: 0 20px 0 0;
+        color: #ffbf00;
+        text-decoration:none;
+        transition:all .3s ease;
+    }
+    body .mainContainer .content .allAnnounce .pageSubHeader a:hover {
+        color: #fff;
+    }
+body .mainContainer .content .allAnnounce .announceProduct .announceItem {
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  position:relative;
+}
+    body .mainContainer .content .allAnnounce .announceProduct .announceItem .select{
+        cursor:pointer;
+    }
+    body .mainContainer .content .allAnnounce .announceProduct .announceItem .select-announce {
+        position: absolute;
+        top: 0px;
+        left: 10px;
+        color: white;
+        z-index: 5;
+    }
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce {
+  display: inline-block;
+  width: 220px;
+  background: #224285;
+  cursor: pointer;
+  transition: 0.3s;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .imagePost {
+  height: 140px;
+  margin-bottom: 10px;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel {
+    height: 100%;
+}
+
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel .carousel-inner{
+    height: 100%;
+}
+
+    body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .imagePost #myCarousel .carousel-inner item{
+        height: 100%;
+    }
+
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .imagePost img {
+  width: 100%;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce:hover {
+  background: #012f3f;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details {
+  margin-bottom: 10px;
+  padding: 0px 20px;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productName {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productPrice {
+  margin: 0px 0px 10px 0px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffbf00;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productDescription ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productDescription ul li {
+  font-size: 15px;
+  line-height: 25px;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productDescription ul li p {
+  display: inline-block;
+  margin: 0;
+  font-weight: 500;
+  color: #ffbf00;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .details .productDescription ul li span {
+  color: #fff;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn {
+  margin-bottom: 10px;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+    body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul li {
+        flex-grow: 1;
+        float: left;
+        margin: 0px 5px;
+        background: #012f3f;
+        line-height: 30px;
+        text-align: center;
+        transition: 0.2s;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 6px;
+    }
+    body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul li .infoBtn {
+        display: block;
+        height: 33px;
+        
+        padding: 0 10px;
+        text-decoration: none;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 11px;
+    }
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul li > a {
+  color: #fff;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul li:hover {
+  background: #ffbf00;
+}
+body .mainContainer .content .allAnnounce .announceProduct .announceItem .entryAnnounce .viewBtn ul li:hover .infoBtn {
+  color: #012f3f;
+}
+body .mainContainer footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+  padding: 10px 10px;
+  width: 935px;
+  background: #224285;
+}
+body .mainContainer footer .footerLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 13px;
+  font-weight: 500;
+}
+body .mainContainer footer .footerLeft .footerInfo p {
+  margin: 0;
+  color: #ffbf00;
+}
+body .mainContainer footer .footerLeft .footerInfo p span {
+  color: #fff;
+  padding-left: 10px;
+}
+body .mainContainer footer .footerLeft .footerInfo p i {
+  padding-right: 5px;
+}
+body .mainContainer footer .footerLeft .footerText {
+  line-height: 30px;
+}
+body .mainContainer footer .footerLeft .footerText p {
+  margin: 0;
+  padding-bottom: 10px;
+  color: #fff;
+}
+body .mainContainer footer .footerLeft .footerText p i {
+  padding-right: 5px;
+}
+body .mainContainer footer .footerLeft .socialIcons {
+  font-size: 25px;
+}
+body .mainContainer footer .footerLeft .socialIcons ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainer footer .footerLeft .socialIcons ul li {
+  float: left;
+  margin-right: 30px;
+}
+body .mainContainer footer .footerLeft .socialIcons ul li a {
+  color: #fff;
+  transition: 0.2s;
+}
+body .mainContainer footer .footerLeft .socialIcons ul li a:hover {
+  color: #ffbf00;
+}
+body .mainContainer footer .footerRight {
+  padding: 15px 15px;
+  border-radius: 10px;
+  background: #012f3f;
+}
+body .mainContainer footer .footerRight .contactUs {
+  color: #fff;
+}
+body .mainContainer footer .footerRight .contactUs h2 {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+    body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formEmail {
+        padding-bottom: 5px;
+    }
+        body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formEmail input {
+            padding-bottom: 5px;
+            color: rgb(1, 47, 63);
+            border-radius: 5px;
+            padding: 5px;
+            outline: none;
+        }
+body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formEmail label {
+  border: none;
+  font-weight: 500;
+}
+body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formEmail input {
+  width: 373px;
+  border: none;
+}
+body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formComment label {
+  border: none;
+  font-weight: 500;
+}
+    body .mainContainer footer .footerRight .contactUs .contactForm .formContent .formComment textarea {
+        border: none;
+        color: rgb(1, 47, 63);
+        outline: none;
+        border-radius: 5px;
+    }
+body .mainContainer footer .footerRight .contactUs .contactForm .formContent .commentSubmit input {
+  color: #012f3f;
+  background: #ffbf00;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  cursor: pointer;
+}
+body .mainContainerNewAnnounce {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+body .mainContainerNewAnnounce header {
+  background: rgba(0, 0, 0, 0.1);
+}
+body .mainContainerNewAnnounce header .topHead {
+  padding: 15px 2px 15px 2px;
+}
+body .mainContainerNewAnnounce header .topHead .topLeft {
+  display: inline-block;
+}
+body .mainContainerNewAnnounce header .topHead .topLeft h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+body .mainContainerNewAnnounce header .topHead .topRight {
+  float: right;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .socialIcons {
+  float: left;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .socialIcons ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .socialIcons ul li {
+  float: left;
+  margin-right: 10px;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .socialIcons ul li a {
+  transition: 0.2s;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .socialIcons ul li a:hover {
+  color: #ffbf00;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .language {
+  float: left;
+}
+body .mainContainerNewAnnounce header .topHead .topRight .language .selectpicker {
+  border: none;
+}
+body .mainContainerNewAnnounce header .middleHead .middleLeft {
+  display: inline-block;
+}
+body .mainContainerNewAnnounce header .middleHead .middleLeft a {
+  font-size: 24px;
+  text-decoration: none;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce header .middleHead .middleLeft a h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight {
+  float: right;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav {
+  float: left;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li {
+  float: left;
+  margin-left: 40px;
+  line-height: 45px;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #012f3f;
+  transition: 0.5s ease-in;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li a i {
+  margin-right: 5px;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li .announceButton {
+  background: #224285;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 500;
+  width: 230px;
+  transition: 0.2s ease-in;
+  color: #fff;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li .announceButton i {
+  color: #fff;
+}
+body .mainContainerNewAnnounce header .middleHead .middleRight .middleNav ul li .announceButton:hover {
+  background: #012f3f;
+}
+body .mainContainerNewAnnounce header .bottomHead {
+  padding: 15px 0px 15px 0px;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li {
+  text-align: center;
+  flex-grow: 1;
+  float: left;
+  border-right: 1px solid #5975b0;
+  transition: 0.2s ease;
+  background: #224285;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .Home {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 12px 0px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .Home:hover {
+  background: #012f3f;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button {
+  width: 100%;
+  font-size: 13px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  text-align: center;
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button > i {
+  padding: 5px;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button::focus {
+  outline: none;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button .zmdi-chevron-down {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__button:hover {
+  background: #012f3f;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top left;
+  transform: scale(1, 0);
+  transition: all ease-in-out .3s;
+  z-index: 2;
+  max-height: 200px;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1, 1);
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list > li {
+  width: 100%;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: #c1c1c1;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 5px;
+  background-color: #012f3f;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item {
+  display: block;
+  list-style-type: none;
+  background: #fff;
+  border-top: 1px solid #e6e6e6;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item > a {
+  padding: 7px 10px;
+  display: block;
+  font-size: 15px;
+  text-decoration: none;
+  color: #012f3f;
+  transition: all .3s ease;
+}
+body .mainContainerNewAnnounce header .bottomHead .headerNav ul li .select-dropdown .select-dropdown__list-item > a:hover {
+  background: #012f3f;
+  color: #fff;
+}
+body .mainContainerNewAnnounce .anounce-content .header h1 {
+  color: #012f3f;
+  font-size: 30px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px 0 10px 0;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form {
+  grid-column: 1/9;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .category .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .category .form-group select.form-control {
+  box-shadow: initial;
+  border: 1px solid #012f3f;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .category .form-group label {
+  color: #012f3f;
+}
+    body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .category .form-group span {
+        font-size: 13px;
+        margin-left: 260px;
+        color: #c33;
+    }
+    body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .form-group span {
+        font-size: 13px;
+        margin-left: 260px;
+        color: #c33;
+    }
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .form-group select.form-control {
+  box-shadow: initial;
+  border: 1px solid #012f3f;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .form-group input.form-control {
+  box-shadow: initial;
+  border: 1px solid #012f3f;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .form-group label {
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .container-new {
+  margin: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply {
+  border: 1px solid #012f3f;
+  border-left: none;
+  border-radius: 0px 5px 5px 0px;
+  margin-bottom: 15px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply > p {
+  margin: 0 0 15px 15px;
+  color: #012f3f;
+  font-size: 18px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply .form-group {
+  margin: 0 0 15px 15px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply .form-group > div {
+  width: 300px;
+  position: relative;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply .form-group > div > input {
+  color: #012f3f;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category .transport-supply .form-group > div > label {
+  color: #012f3f;
+  font-size: 14px;
+  position: relative;
+  top: -3px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .change-category > p {
+  margin: 0 0 15px 15px;
+  color: #012f3f;
+  font-size: 13px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group select.form-control {
+  box-shadow: initial;
+  border: 1px solid #012f3f;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group input.form-control {
+  box-shadow: initial;
+  border: 1px solid #012f3f;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group span {
+  color: #012f3f;
+  font-size: 16px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group textarea {
+  color: #012f3f;
+  font-size: 15px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group label {
+  color: #012f3f;
+}
+    body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .form-group span {
+        font-size: 13px;
+        margin-left: 260px;
+        color: #c33;
+    }
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images {
+  margin-left: 0;
+  margin-right: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images label {
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images .images #show-images {
+  margin: 10px 0 0 0;
+  background: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images .images #show-images > div {
+  position: relative;
+  display: inline-block;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images .images #show-images > div > img {
+  width: 120px;
+  margin: 10px 10px 34px 10px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .add-images .images #show-images > div > span {
+  color: white;
+  position: absolute;
+  right: 66px;
+  bottom: 13px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .contact {
+  margin: 10px 0;
+  padding: 10px 10px 10px 0;
+  border: 1px solid #012f3f;
+  border-left: none;
+  border-radius: 0px 5px 5px 0px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .contact .service > div {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .contact .service > div .vip-info {
+  background: #ffbf00;
+  padding: 6px;
+  border-radius: 7px;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .confirm-roles {
+  padding: 0 15px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .confirm-roles > span {
+  font-size: 13px;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .confirm-roles > span > a {
+  font-size: 14px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .lot-save {
+  margin: 20px 0 0 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .announce-form .lot-post .lot-save button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: #ffbf00;
+  color: #012f3f;
+  font-size: 17px;
+  padding: 5px 15px;
+  display: block;
+  margin: auto;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule {
+  padding: 0 20px;
+  grid-column: 9/13;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule > h3 {
+  color: #012f3f;
+  margin-top: 0;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule > ul {
+  margin: 0 0 10px 0;
+  padding-left: 25px;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule > ul > li {
+  font-size: 14px;
+  color: #012f3f;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule > a {
+  color: #224285;
+  font-size: 15px;
+  text-decoration: underline;
+}
+body .mainContainerNewAnnounce .anounce-content .lot-form .lot-rule > a:hover {
+  color: #0d1a34;
+}
+body .mainContainerNewAnnounce footer {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+body .mainContainerNewAnnounce footer .myfooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px;
+  background: #224285;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 13px;
+  font-weight: 500;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerInfo p {
+  margin: 0;
+  color: #ffbf00;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerInfo p span {
+  color: #fff;
+  padding-left: 10px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerInfo p i {
+  padding-right: 5px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerText {
+  line-height: 30px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerText p {
+  margin: 0;
+  padding-bottom: 10px;
+  color: #fff;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .footerText p i {
+  padding-right: 5px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .socialIcons {
+  font-size: 25px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .socialIcons ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .socialIcons ul li {
+  float: left;
+  margin-right: 30px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .socialIcons ul li a {
+  color: #fff;
+  transition: 0.2s;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerLeft .socialIcons ul li a:hover {
+  color: #ffbf00;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight {
+  padding: 15px 15px;
+  border-radius: 10px;
+  background: #012f3f;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs {
+  color: #fff;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs h2 {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .formEmail {
+  padding-bottom: 5px;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .formEmail label {
+  border: none;
+  font-weight: 500;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .formEmail input {
+  width: 373px;
+  border: none;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .formComment label {
+  border: none;
+  font-weight: 500;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .formComment textarea {
+  border: none;
+}
+body .mainContainerNewAnnounce footer .myfooter .footerRight .contactUs .contactForm .formContent .commentSubmit input {
+  color: #012f3f;
+  background: #ffbf00;
+  padding: 5px 30px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.autoItemContent .productImages {
+  background: #224285;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.autoItemContent .productImages .image {
+  grid-column: 1/2;
+  padding: 20px;
+}
+.autoItemContent .productImages .image .column {
+  cursor: zoom-in;
+}
+.autoItemContent .productImages .image .column .hover-shadow {
+  transition: 0.3s;
+}
+.autoItemContent .productImages .image .column .hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.autoItemContent .productImages .images {
+  grid-column: 2/3;
+  padding: 20px;
+}
+.autoItemContent .productImages .images .column {
+  display: inline-block;
+  width: 30%;
+  padding: 0 5px 10px 5px;
+  cursor: zoom-in;
+}
+.autoItemContent .productImages .images .column .hover-shadow {
+  transition: 0.3s;
+}
+.autoItemContent .productImages .images .column .hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.autoItemContent .productImages .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.autoItemContent .productImages .modal #transportClose {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.autoItemContent .productImages .modal #transportClose:hover {
+  color: #ffbf00;
+  text-decoration: none;
+  cursor: pointer;
+}
+.autoItemContent .productImages .modal .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  background: black;
+  height: 100%;
+  margin: auto;
+  padding: 0;
+  width: 70%;
+  max-width: 1200px;
+  border: none;
+}
+.autoItemContent .productImages .modal .modal-content .mySlides {
+  width: 73%;
+  display: block;
+  margin: auto;
+}
+.autoItemContent .productImages .modal .modal-content .mySlides .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.autoItemContent .productImages .modal .modal-content #transportPrev,
+.autoItemContent .productImages .modal .modal-content #transportNext {
+  cursor: pointer;
+  position: absolute;
+  background: #224285;
+  opacity: 0.4;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  color: white;
+}
+.autoItemContent .productImages .modal .modal-content #transportPrev:hover,
+.autoItemContent .productImages .modal .modal-content #transportNext:hover {
+  background-color: #012f3f;
+  opacity: 1;
+}
+.autoItemContent .productImages .modal .modal-content .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.autoItemContent .productDetails .detailsTopBar {
+  display: flex;
+  position: relative;
+  padding: 30px;
+}
+.autoItemContent .productDetails .detailsTopBar .productPrice {
+  background: #224285;
+  width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.autoItemContent .productDetails .detailsTopBar .productPrice > strong {
+  font-size: 30px;
+  margin-right: 2px;
+  color: #ffbf00;
+}
+.autoItemContent .productDetails .detailsTopBar .productPrice > span {
+  font-size: 20px;
+  color: #fff;
+  position: relative;
+  top: -3px;
+  opacity: 0.8;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo {
+  width: 720px;
+  display: table-cell;
+  vertical-align: top;
+  margin-left: 20px;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo .productTitle h2 {
+  margin-top: 0px;
+  color: #012f3f;
+  font-weight: bold;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo .ownServices .services {
+  margin: 0;
+  padding: 0;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo .ownServices .services li {
+  display: inline-block;
+  margin-right: 16px;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo .ownServices .services li a {
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #fff;
+  border: 1.2px solid #224285;
+  color: #012f3f;
+  transition: all .5s ease;
+}
+.autoItemContent .productDetails .detailsTopBar .productInfo .ownServices .services li a:hover {
+  color: #012f3f;
+  background: rgba(0, 0, 0, 0.1);
+}
+.autoItemContent .productDetails .detailsContent {
+  background: white;
+  display: flex;
+  padding: 20px 30px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact {
+  width: 220px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .author {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .author > a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #012f3f;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .author > a:hover {
+  color: #012f3f;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .author > span {
+  display: block;
+  font-size: 16px;
+  margin-top: 6px;
+  color: #012f3f;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .author > i {
+  position: absolute;
+  right: 20px;
+  top: 34px;
+  font-size: 30px;
+  color: #ffbf00;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-info {
+  font-size: 13px;
+  padding: 10px 20px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-info > p {
+  color: #012f3f;
+  margin: 0;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-actions {
+  margin-bottom: 10px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-actions ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: 1.2px solid #ffbf00;
+  border-radius: 4px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-actions ul > li > a {
+  display: block;
+  padding: 10px 20px;
+  color: #012f3f;
+  text-decoration: none;
+  font-size: 14px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-actions ul > li > a > i {
+  margin-right: 10px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .lot-actions ul > li:last-child {
+  border-top: 1.2px solid #ffbf00;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .addmark {
+  font-size: 13px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .addmark > a {
+  text-decoration: none;
+  color: #012f3f;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .addmark > a > i {
+  padding-right: 6px;
+}
+.autoItemContent .productDetails .detailsContent .contentContact .addmark > a:hover {
+  color: #012f3f;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails {
+  width: 720px;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px 0px;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .leftDetails {
+  grid-column: 1/2;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .leftDetails .lot-properties {
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .leftDetails .lot-properties .property {
+  list-style: none;
+  border: none;
+  border-bottom: 1px solid #224285;
+  padding: 10px 0 0 0;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .leftDetails .lot-properties .property .propertyName {
+  min-width: 160px;
+  color: #012f3f;
+  font-size: 16px;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .leftDetails .lot-properties .property .propertyValue {
+  color: #012f3f;
+  font-size: 14px;
+  display: inline-block;
+  max-width: 135px;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .rightDetails {
+  grid-column: 2/3;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .rightDetails .lot-properties {
+  margin: 50px 0 0 50px;
+  padding: 0;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .rightDetails .lot-properties .property .propertyValue {
+  color: #012f3f;
+  font-size: 15px;
+  display: inline-block;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .footerDetails {
+  grid-column: 1/3;
+  margin-top: 15px;
+}
+.autoItemContent .productDetails .detailsContent .contentDetails .footerDetails > span {
+  font-size: 15px;
+}
+
+.test {
+  background-color: #ffbf00 !important;
+  color: #012f3f !important;
+}
+
+.style-model {
+    background-color: #ffbf00 !important;
+}
+
+.headerNavItemActive {
+  background: #012f3f !important;
+}

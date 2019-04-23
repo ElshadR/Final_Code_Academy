@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+	"libraries": [
+		{
+			"destination": "wwwroot/css/",
+			"provider": "filesystem",
+			"library": "C:\\Users\\User\\Desktop\\Layihe\\Allsat\\css",
+			"files": [ "style.css" ]
+		},
+		{
+			"destination": "wwwroot/js/",
+			"provider": "filesystem",
+			"library": "C:\\Users\\User\\Desktop\\Layihe\\Allsat\\js",
+			"files": [ "main.js", "product-details.js" ]
+		},
+		{
+			"destination": "wwwroot/css/Admin/",
+			"provider": "filesystem",
+			"library": "C:\\Users\\Ilkin\\Desktop\\startbootstrap-sb-admin-gh-pages\\adminPanel\\css",
+			"files": [ "sb-admin.css", "sb-admin.min.css" ]
+		},
+		{
+			"destination": "wwwroot/js/Admin/",
+			"provider": "filesystem",
+			"library": "C:\\Users\\Ilkin\\Desktop\\startbootstrap-sb-admin-gh-pages\\adminPanel\\js",
+			"files": [ "sb-admin.js", "sb-admin.min.js" ]
+		}
+	]
+ 
+}
