@@ -16,17 +16,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace FirstRealProject
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
+        private readonly ILogger _logger;
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
+        {
+            Configuration = configuration;
+            _logger = logger;
+        }
 
-		public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
@@ -49,21 +52,27 @@ namespace FirstRealProject
 
 
             services.AddScoped<IAnnounceToAdd, AnnounceToAdd>();
+            _logger.LogInformation("Added AnnounceToAdd to services");
             services.AddScoped<IFindAnnounce, FindAnnounce>();
+            _logger.LogInformation("Added FindAnnounce to services");
             services.AddScoped<IUpdateAnnounce, UpdateAnnounce>();
+            _logger.LogInformation("Added FindAnnounce to services");
 
             //Registering a Custom Password Validator
             services.AddTransient<IPasswordValidator<AppUser>,CustomPasswordValidator>();
+            _logger.LogInformation("Added CustomPasswordValidator to services");
             //END Registering a Custom Password Validator
 
             //Announce setting start
             services.AddTransient<ISettingAnnounce, SettingAnnounce>();
+            _logger.LogInformation("Added SettingAnnounce to services");
             //Announce setting end
 
             services.AddTransient<IUserValidator<AppUser>,CustomUserValidator>();
+            _logger.LogInformation("Added CustomUserValidator to services");
 
 
-			services.Configure<CookiePolicyOptions>(options =>
+            services.Configure<CookiePolicyOptions>(options =>
 			{
 				// This lambda determines whether user consent for non-essential cookies is needed for a given request.
 				options.CheckConsentNeeded = context => true;
@@ -82,20 +91,27 @@ namespace FirstRealProject
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:FirstRealProjectDb"]);
             });
+            _logger.LogInformation("Added FirstRealProjectDbContext");
 
-			services.AddSession();
 
-			services.AddMvc()
+            services.AddSession();
+            _logger.LogInformation("Added Session");
+
+            services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
-			app.UseStatusCodePages();
-			if (env.IsDevelopment())
+            DateTime Data = DateTime.Now;
+            loggerFactory.AddFile($"Logs/data-log-{Data.Year}_{Data.Month}_{Data.Day}_{Data.Hour}_{Data.Second}_{Data.Millisecond}.txt");
+            app.UseStatusCodePages();
+
+            if (env.IsDevelopment())
 			{
-				app.UseDeveloperExceptionPage();
+                _logger.LogInformation("In Development environment");
+                app.UseDeveloperExceptionPage();
 			}
 			else
 			{

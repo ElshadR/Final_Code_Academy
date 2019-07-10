@@ -20,6 +20,8 @@ using FirstRealProject.Models.Commons;
 using Microsoft.AspNetCore.Identity;
 using FirstRealProject.Models.Accounts;
 using FirstRealProject.Models.PagesModels.ViewModel.Common;
+using FirstRealProject.Models.Transports.MotocycleModels;
+using Microsoft.Extensions.Logging;
 
 namespace FirstRealProject.Controllers
 {
@@ -31,8 +33,9 @@ namespace FirstRealProject.Controllers
         private ISettingAnnounce _setting { get; set; }
         private UserManager<AppUser> _userManager;
         private IHostingEnvironment _hostingEnvironment { get; set; }
+        readonly ILogger<HomeController> _logger;
 
-        public HomeController(UserManager<AppUser> userMgr, IHostingEnvironment hostingEnvironment, FirstRealProjectDbContext dbContext, IAnnounceToAdd toAdd, IFindAnnounce dataFind, ISettingAnnounce setting)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userMgr, IHostingEnvironment hostingEnvironment, FirstRealProjectDbContext dbContext, IAnnounceToAdd toAdd, IFindAnnounce dataFind, ISettingAnnounce setting)
         {
             _dbContext = dbContext;
             _dataFind = dataFind;
@@ -40,10 +43,12 @@ namespace FirstRealProject.Controllers
             _userManager = userMgr;
             _addAnnounce = toAdd;
             _hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
         public async Task<IActionResult> SelectedAnnounces()
         {
+            
             var carCookie = Request.Cookies["carId"]?.Split(',');
             var busCookie = Request.Cookies["busId"]?.Split(',');
             var accessoryCookie = Request.Cookies["accessoryId"]?.Split(',');
@@ -60,56 +65,204 @@ namespace FirstRealProject.Controllers
             List<ViewAnnounce> data = new List<ViewAnnounce>();
             if (carCookie != null)
             {
-                foreach (var item in carCookie)
+                try
                 {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceCar = await _dbContext.Cars
-                                         .Where(c => c.Id == id)
-                                         .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
-                                         .Select(c => new ViewAnnounce(FindTable.Car)
-                                         {
-                                             Id = c.Id,
-                                             Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Car),
-                                             Price = c.Price,
-                                             City = c.City.Name,
-                                             AnnounceUnicode = c.AnnounceUniqueCode,
-                                             AddedPublishDate = c.AnnouncePublishDate.Value,
-                                             SelectedAnnounce = true,
-                                             ActivePhoto = c.CarPhotos.Select(p => new ViewPhoto
-                                             {
-                                                 Id = p.Id,
-                                                 Path = p.Path,
-                                                 AnnounceId = c.Id,
-
-                                             }).FirstOrDefault(),
-                                             Photos = c.CarPhotos.Select(p => new ViewPhoto
-                                             {
-                                                 Id = p.Id,
-                                                 Path = p.Path,
-                                                 AnnounceId = c.Id,
-
-                                             }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceCar);
-                        }
-                    }
+                    data.AddRange(SelectCars(carCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Cars were added to the list");
                 }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add cars to the list");
+                }
+
             }
             if (busCookie != null)
             {
-                foreach (var item in busCookie)
+                try
                 {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceBus = await _dbContext.Buses
-                                         .Where(c => c.Id == id)
+                    data.AddRange(SelectBuses(busCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Buses were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add buses to the list");
+                }
+                
+            }
+            if (motocycleCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectMotocycles(motocycleCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Motocycles were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add motocycles to the list");
+                }
+            }
+            if (accessoryCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectAccessories(accessoryCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Accessories were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add accessories to the list");
+                }
+            }
+            if (apartmentCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectApartments(apartmentCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Apartments were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add apartments to the list");
+                }
+            }
+            if (houseCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectHouses(houseCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Houses were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add houses to the list");
+                }
+            }
+            if (officeCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectOffices(officeCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Offices were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add offices to the list");
+                }
+            }
+            if (landCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectLands(landCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Lands were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add lands to the list");
+                }
+            }
+            if (garageCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectGarages(garageCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Garages were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add garages to the list");
+                }
+            }
+            if (jobCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectJobs(jobCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Jobs were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add jobs to the list");
+                }
+            }
+            if (businessCookie != null)
+            {
+                try
+                {
+                    data.AddRange(SelectBusinesses(businessCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Businesses were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add businesses to the list");
+                }
+            }
+            if (foodCookie != null)
+            {
+                try
+                {
+                data.AddRange(SelectFoods(foodCookie).GetAwaiter().GetResult());
+                    _logger.LogInformation("Foods were added to the list");
+                }
+                catch (Exception exp)
+                {
+                    _logger.LogError(exp, "Could not add foods to the list");
+                }
+            }
+
+            return View(data);
+        }
+
+        public async  Task<IEnumerable<ViewAnnounce>> SelectCars(string[] carCookie )
+        {
+            try
+            {
+                IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+                if (carCookie != null && carCookie.Count() != 0)
+                {
+                    announces = await _dbContext.Cars
+                                             .Where(c => carCookie.Contains(c.Id.ToString()))
+                                             .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
+                                             .Select(c => new ViewAnnounce(FindTable.Car)
+                                             {
+                                                 Id = c.Id,
+                                                 Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Car),
+                                                 Price = c.Price,
+                                                 City = c.City.Name,
+                                                 AnnounceUnicode = c.AnnounceUniqueCode,
+                                                 AddedPublishDate = c.AnnouncePublishDate.Value,
+                                                 SelectedAnnounce = true,
+                                                 ActivePhoto = c.CarPhotos.Select(p => new ViewPhoto
+                                                 {
+                                                     Id = p.Id,
+                                                     Path = p.Path,
+                                                     AnnounceId = c.Id,
+
+                                                 }).FirstOrDefault(),
+                                                 Photos = c.CarPhotos.Select(p => new ViewPhoto
+                                                 {
+                                                     Id = p.Id,
+                                                     Path = p.Path,
+                                                     AnnounceId = c.Id,
+
+                                                 }).ToList(),
+                                             }).ToListAsync();
+                }
+                return announces;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
+
+        public async Task<IEnumerable<ViewAnnounce>> SelectBuses(string[] busCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (busCookie != null && busCookie.Count() != 0)
+            {
+                announces = await _dbContext.Buses
+                                         .Where(c => busCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Bus)
                                          {
@@ -134,23 +287,17 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceBus);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (motocycleCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectMotocycles(string[] motocycleCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (motocycleCookie != null && motocycleCookie.Count() != 0)
             {
-                foreach (var item in motocycleCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceMotocycle = await _dbContext.Motocycles
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Motocycles
+                                         .Where(c => motocycleCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Motocycle)
                                          {
@@ -175,23 +322,17 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceMotocycle);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (accessoryCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectAccessories(string[] accessoryCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (accessoryCookie != null && accessoryCookie.Count() != 0)
             {
-                foreach (var item in accessoryCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceAccessory = await _dbContext.Accessories
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Accessories
+                                         .Where(c => accessoryCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Accessory)
                                          {
@@ -216,23 +357,17 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceAccessory);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (apartmentCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectApartments(string[] apartmentCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (apartmentCookie != null && apartmentCookie.Count() != 0)
             {
-                foreach (var item in apartmentCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceApartment = await _dbContext.Apartments
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Apartments
+                                         .Where(c => apartmentCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Apartment)
                                          {
@@ -257,64 +392,52 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceApartment);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (houseCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectHouses(string[] hoseCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (hoseCookie != null && hoseCookie.Count() != 0)
             {
-                foreach (var item in houseCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceHouse = await _dbContext.Houses
-                                          .Where(c => c.Id == id)
-                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
-                                          .Select(c => new ViewAnnounce(FindTable.House)
-                                          {
-                                              Id = c.Id,
-                                              Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.House),
-                                              Price = c.Price,
-                                              City = c.City.Name,
-                                              AnnounceUnicode = c.AnnounceUniqueCode,
-                                              AddedPublishDate = c.AnnouncePublishDate.Value,
-                                              SelectedAnnounce = true,
-                                              ActivePhoto = c.HousePhotos.Select(p => new ViewPhoto
-                                              {
-                                                  Id = p.Id,
-                                                  Path = p.Path,
-                                                  AnnounceId = c.Id,
+                announces = await _dbContext.Houses
+                                         .Where(c => hoseCookie.Contains(c.Id.ToString()))
+                                         .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
+                                         .Select(c => new ViewAnnounce(FindTable.House)
+                                         {
+                                             Id = c.Id,
+                                             Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.House),
+                                             Price = c.Price,
+                                             City = c.City.Name,
+                                             AnnounceUnicode = c.AnnounceUniqueCode,
+                                             AddedPublishDate = c.AnnouncePublishDate.Value,
+                                             SelectedAnnounce = true,
+                                             ActivePhoto = c.HousePhotos.Select(p => new ViewPhoto
+                                             {
+                                                 Id = p.Id,
+                                                 Path = p.Path,
+                                                 AnnounceId = c.Id,
 
-                                              }).FirstOrDefault(),
-                                              Photos = c.HousePhotos.Select(p => new ViewPhoto
-                                              {
-                                                  Id = p.Id,
-                                                  Path = p.Path,
-                                                  AnnounceId = c.Id,
+                                             }).FirstOrDefault(),
+                                             Photos = c.HousePhotos.Select(p => new ViewPhoto
+                                             {
+                                                 Id = p.Id,
+                                                 Path = p.Path,
+                                                 AnnounceId = c.Id,
 
-                                              }).ToList(),
-                                          }).SingleOrDefaultAsync();
-                            data.Add(announceHouse);
-                        }
-                    }
-                }
+                                             }).ToList(),
+                                         }).ToListAsync();
             }
-            if (officeCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectOffices(string[] officeCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (officeCookie != null && officeCookie.Count() != 0)
             {
-                foreach (var item in officeCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceOffice = await _dbContext.Offices
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Offices
+                                         .Where(c => officeCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Office)
                                          {
@@ -339,23 +462,17 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceOffice);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (landCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectLands(string[] landCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (landCookie != null && landCookie.Count() != 0)
             {
-                foreach (var item in landCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceLand = await _dbContext.Lands
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Lands
+                                         .Where(c => landCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Land)
                                          {
@@ -380,23 +497,18 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceLand);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (garageCookie != null)
+            return announces;
+        }
+
+        public async Task<IEnumerable<ViewAnnounce>> SelectGarages(string[] garageCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (garageCookie != null && garageCookie.Count() != 0)
             {
-                foreach (var item in garageCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceGarage = await _dbContext.Garages
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Garages
+                                         .Where(c => garageCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Garage)
                                          {
@@ -421,105 +533,87 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceGarage);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (jobCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectJobs(string[] jobCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (jobCookie != null && jobCookie.Count() != 0)
             {
-                foreach (var item in jobCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceJob = await _dbContext.Jobs
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Jobs
+                                         .Where(c => jobCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
-                                         .Select(c => new ViewAnnounce(FindTable.Job)
+                                          .Select(c => new ViewAnnounce(FindTable.Job)
+                                          {
+                                              Id = c.Id,
+                                              Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Job),
+                                              Price = c.Price,
+                                              City = c.City.Name,
+                                              AnnounceUnicode = c.AnnounceUniqueCode,
+                                              AddedPublishDate = c.AnnouncePublishDate.Value,
+                                              SelectedAnnounce = true,
+                                              ActivePhoto = c.JobPhotos.Select(p => new ViewPhoto
+                                              {
+                                                  Id = p.Id,
+                                                  Path = p.Path,
+                                                  AnnounceId = c.Id,
+
+                                              }).FirstOrDefault(),
+                                              Photos = c.JobPhotos.Select(p => new ViewPhoto
+                                              {
+                                                  Id = p.Id,
+                                                  Path = p.Path,
+                                                  AnnounceId = c.Id,
+
+                                              }).ToList(),
+                                          }).ToListAsync();
+            }
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectBusinesses(string[] businessCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (businessCookie != null && businessCookie.Count() != 0)
+            {
+                announces = await _dbContext.BusinessEquipments
+                                         .Where(c => businessCookie.Contains(c.Id.ToString()))
+                                         .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
+                                         .Select(c => new ViewAnnounce(FindTable.Business)
                                          {
                                              Id = c.Id,
-                                             Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Job),
+                                             Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Business),
                                              Price = c.Price,
                                              City = c.City.Name,
                                              AnnounceUnicode = c.AnnounceUniqueCode,
                                              AddedPublishDate = c.AnnouncePublishDate.Value,
                                              SelectedAnnounce = true,
-                                             ActivePhoto = c.JobPhotos.Select(p => new ViewPhoto
+                                             ActivePhoto = c.BusinessEPhotos.Select(p => new ViewPhoto
                                              {
                                                  Id = p.Id,
                                                  Path = p.Path,
                                                  AnnounceId = c.Id,
 
                                              }).FirstOrDefault(),
-                                             Photos = c.JobPhotos.Select(p => new ViewPhoto
+                                             Photos = c.BusinessEPhotos.Select(p => new ViewPhoto
                                              {
                                                  Id = p.Id,
                                                  Path = p.Path,
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceJob);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-            if (businessCookie != null)
+            return announces;
+        }
+        public async Task<IEnumerable<ViewAnnounce>> SelectFoods(string[] foodCookie)
+        {
+            IEnumerable<ViewAnnounce> announces = new List<ViewAnnounce>();
+            if (foodCookie != null && foodCookie.Count() != 0)
             {
-                foreach (var item in businessCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceBusiness = await _dbContext.BusinessEquipments
-                                        .Where(c => c.Id == id)
-                                        .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
-                                        .Select(c => new ViewAnnounce(FindTable.Business)
-                                        {
-                                            Id = c.Id,
-                                            Name = _setting.GenerateAnnounceName(c.AnnounceName, FindTable.Business),
-                                            Price = c.Price,
-                                            City = c.City.Name,
-                                            AnnounceUnicode = c.AnnounceUniqueCode,
-                                            AddedPublishDate = c.AnnouncePublishDate.Value,
-                                            SelectedAnnounce = true,
-                                            ActivePhoto = c.BusinessEPhotos.Select(p => new ViewPhoto
-                                            {
-                                                Id = p.Id,
-                                                Path = p.Path,
-                                                AnnounceId = c.Id,
-
-                                            }).FirstOrDefault(),
-                                            Photos = c.BusinessEPhotos.Select(p => new ViewPhoto
-                                            {
-                                                Id = p.Id,
-                                                Path = p.Path,
-                                                AnnounceId = c.Id,
-
-                                            }).ToList(),
-                                        }).SingleOrDefaultAsync();
-                            data.Add(announceBusiness);
-                        }
-                    }
-                }
-            }
-            if (foodCookie != null)
-            {
-                foreach (var item in foodCookie)
-                {
-                    int id = 0;
-                    if (!String.IsNullOrEmpty(item))
-                    {
-                        if (Int32.TryParse(item, out id))
-                        {
-                            var announceFood = await _dbContext.Foods
-                                         .Where(c => c.Id == id)
+                announces = await _dbContext.Foods
+                                         .Where(c => foodCookie.Contains(c.Id.ToString()))
                                          .Where(c => c.AnnounceCheckIn && c.AnnouncePublished)
                                          .Select(c => new ViewAnnounce(FindTable.Food)
                                          {
@@ -544,14 +638,9 @@ namespace FirstRealProject.Controllers
                                                  AnnounceId = c.Id,
 
                                              }).ToList(),
-                                         }).SingleOrDefaultAsync();
-                            data.Add(announceFood);
-                        }
-                    }
-                }
+                                         }).ToListAsync();
             }
-
-            return View(data);
+            return announces;
         }
         public async Task<IActionResult> CompairAnnounces()
         {
@@ -1210,25 +1299,33 @@ namespace FirstRealProject.Controllers
 
         public async Task<IActionResult> Index(ViewPage viewPage)
         {
-            HttpContext.Session.SetString("compair", "");
-            viewPage.announceIds = Request.Cookies["carId"];
-            viewPage.announceBusIds = Request.Cookies["busId"];
-            viewPage.announceMotocycleIds = Request.Cookies["motocycleId"];
-            viewPage.announceAccessoryIds = Request.Cookies["accessoryId"];
-            viewPage.announceApartmentIds = Request.Cookies["apartmentId"];
-            viewPage.announceHouseIds = Request.Cookies["houseId"];
-            viewPage.announceOfficeIds = Request.Cookies["officeId"];
-            viewPage.announceLandIds = Request.Cookies["landId"];
-            viewPage.announceGarageIds = Request.Cookies["garageId"];
-            viewPage.announceJobIds = Request.Cookies["jobId"];
-            viewPage.announceBusinessIds = Request.Cookies["businessId"];
-            viewPage.announceFoodIds = Request.Cookies["foodId"];
-            ViewPage data = new ViewPage
+            ViewPage data = new ViewPage();
+            try
             {
-                ViewAnnouncesSimple = await _dataFind.CommonAnnounce(viewPage, "sade elan", 0, 7),
-                ViewAnnouncesVip = await _dataFind.CommonAnnounce(viewPage, "vip elan", 0, 7),
-                ViewAnnouncesPremium = await _dataFind.CommonAnnounce(viewPage, "premium elan", 0, 7)
-            };
+                HttpContext.Session.SetString("compair", "");
+                viewPage.announceIds = Request.Cookies["carId"];
+                viewPage.announceBusIds = Request.Cookies["busId"];
+                viewPage.announceMotocycleIds = Request.Cookies["motocycleId"];
+                viewPage.announceAccessoryIds = Request.Cookies["accessoryId"];
+                viewPage.announceApartmentIds = Request.Cookies["apartmentId"];
+                viewPage.announceHouseIds = Request.Cookies["houseId"];
+                viewPage.announceOfficeIds = Request.Cookies["officeId"];
+                viewPage.announceLandIds = Request.Cookies["landId"];
+                viewPage.announceGarageIds = Request.Cookies["garageId"];
+                viewPage.announceJobIds = Request.Cookies["jobId"];
+                viewPage.announceBusinessIds = Request.Cookies["businessId"];
+                viewPage.announceFoodIds = Request.Cookies["foodId"];
+                data = new ViewPage
+                {
+                    ViewAnnouncesSimple = await _dataFind.CommonAnnounce(viewPage, "sade elan", 0, 7),
+                    ViewAnnouncesVip = await _dataFind.CommonAnnounce(viewPage, "vip elan", 0, 7),
+                    ViewAnnouncesPremium = await _dataFind.CommonAnnounce(viewPage, "premium elan", 0, 7)
+                };
+            }
+            catch (Exception exp)
+            {
+                _logger.LogError(exp, "Home controller Index action");
+            }
             return View(data);
         }
         [Route("all/[controller]/type-home")]

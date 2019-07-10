@@ -39,6 +39,14 @@ namespace FirstRealProject
 
 		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
-				.UseStartup<Startup>();
+            .UseKestrel()
+                //.ConfigureLogging((hostingContext, logging) =>
+                //{
+                //    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                //    logging.AddConsole();
+                //    logging.AddDebug();
+                //    logging.AddEventSourceLogger();
+                //})
+                .UseStartup<Startup>();
 	}
 }
